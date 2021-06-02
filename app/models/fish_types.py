@@ -9,5 +9,6 @@ class FishType(db.Model):
 
     def to_dict(self):
         return {
+            "id": self.id,
             "fish_type": self.fish_type
         }
