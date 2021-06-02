@@ -7,7 +7,11 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import Homepage from './components/Homepage';
+import Test from "./components/Test";
 import { authenticate } from "./store/session";
+import { displayAppointments } from "./store/appointments";
+import NewAppointment from './components/NewAppointment';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -42,7 +46,10 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} >
-          <h1>Hello World</h1>
+          <Homepage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/appointments/new/:type" exact={true} >
+          <NewAppointment />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
