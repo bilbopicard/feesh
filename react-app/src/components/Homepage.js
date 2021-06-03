@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { displayAppointments } from "../store/appointments";
+import './styles/homepage.css'
+import HomeBlurb from './HomeBlurb';
 
 function Homepage() {
 
     const dispatch = useDispatch();
+    const [active, setActive] = useState('feeding');
 
+    const divClick = (e) => {
+        const clicked = e.target.id;
+        console.log(clicked)
+        if (active === clicked) {
+            setActive(active)
+        } else {
+            setActive(clicked)
+        }
+    }
 
     useEffect(() => {
         dispatch(displayAppointments())
@@ -15,12 +27,13 @@ function Homepage() {
     return (
         <div>
             <div id='appointment-type-container'>
-                <div className='home-inner-type-div current'><NavLink to='/appointments/new/feeding'>Feeding</NavLink></div>
-                <div className='home-inner-type-div'><NavLink to='/appointments/new/training'>Training</NavLink></div>
-                <div className='home-inner-type-div'><NavLink to='/appointments/new/drop-in'>Drop-In</NavLink></div>
-                <div className='home-inner-type-div'><NavLink to='/appointments/new/health'>Health</NavLink></div>
-                <div className='home-inner-type-div'><NavLink to='/appointments/new/sitting'>Sitting</NavLink></div>
-                <div className='home-inner-type-div'><NavLink to='/appointments/new/boarding'>Boarding</NavLink></div>
+                <div className={`home-inner-type-div ${active === 'feeding' ? 'active' : ''}`} id='feeding' onClick={divClick}>Feeding</div>
+                <div className={`home-inner-type-div ${active === 'training' ? 'active' : ''}`} id='training' onClick={divClick}>Training</div>
+                <div className={`home-inner-type-div ${active === 'drop-in' ? 'active' : ''}`} id='drop-in' onClick={divClick}>Drop-In</div>
+                <div className={`home-inner-type-div ${active === 'health' ? 'active' : ''}`} id='health' onClick={divClick}>Health</div>
+                <div className={`home-inner-type-div ${active === 'sitting' ? 'active' : ''}`} id='sitting' onClick={divClick}>Sitting</div>
+                <div className={`home-inner-type-div ${active === 'boarding' ? 'active' : ''}`} id='boarding' onClick={divClick}>Boarding</div>
+                <HomeBlurb active={active} />
             </div>
         </div>
     );

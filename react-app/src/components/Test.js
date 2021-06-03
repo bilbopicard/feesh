@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { displayAppointments } from '../store/appointments';
 
 function Test() {
 
-    // Notice we use useParams here instead of getting the params
-    // From props.
+    const dispatch = useDispatch();
+
     const appointments = useSelector(state => {
         return state.appointments.list.map(appointmentId => state.appointments[appointmentId])
     })
 
+    useEffect(() => {
+        dispatch(displayAppointments())
+    }, [dispatch])
     return (
         <div>
             {appointments.map(appointment => (
-                <h3>{appointment.description}</h3>
+                <h3>{appointment.time}</h3>
             ))}
         </div>
     );

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Appointment
+from app.models import db, Appointment, AppointmentType, FishType
+from app.forms.appointment_form import AppointmentForm
 
 appointment_routes = Blueprint('appointments', __name__)
 
@@ -8,16 +9,37 @@ appointment_routes = Blueprint('appointments', __name__)
 @appointment_routes.route('/')
 @login_required
 def appointments():
-    appointments = Appointment.query.all()
+    appointments = Appointment.query.join(
+        AppointmentType, AppointmentType.id == Appointment.appointment_type_id).join(FishType, FishType.id == Appointment.fish_type_id).all()
     return {"appointments": [appointment.to_dict() for appointment in appointments]}
 
 
 @appointment_routes.route('/', methods=['POST'])
 @login_required
 def create_appointment():
-    print('FROM BACKEND', request.data)
-    # appointments = Appointment.query.all()
-    # return {"appointments": [appointment.to_dict() for appointment in appointments]}
+    # print('FROM BACKEND', request.data)
+    form = AppointmentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    if form.validate_on_submit():
+        print('inside validation', form.data['time'])
+        new_appointment = Appointment(
+            user_id=form.data['userId'],
+            description=form.data['description'],
+            date=form.data['date'],
+            time=form.data['time'],
+            image_url=form.data['imageUrl'],
+            street_address=form.data['streetAddress'],
+            city=form.data['city'],
+            zip_code=form.data['zipCode'],
+            fish_type_id=form.data['fishTypeId'],
+            appointment_type_id=form.data['appointmentTypeId']
+        )
+        print(new_appointment)
+        db.session.add(new_appointment)
+        db.session.commit()
+        return new_appointment.to_dict()
+    return 'I think it worked'
 
 
 @appointment_routes.route('/<int:id>')

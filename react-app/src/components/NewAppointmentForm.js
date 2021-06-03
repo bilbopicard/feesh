@@ -10,11 +10,13 @@ function NewAppointmentForm({ type }) {
     const userId = useSelector(state => state.session.user.id)
 
     const [description, setDescription] = useState('')
-    const [dateTime, setDateTime] = useState('')
+    const [date, setDate] = useState('')
     const [streetAddress, setStreetAddress] = useState('')
     const [city, setCity] = useState('')
     const [fishTypeId, setFishTypeId] = useState(0)
     const [zipCode, setZipCode] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
+    const [time, setTime] = useState('')
 
     const fishTypes = useSelector(state => {
         return state.fishTypes.list.map(typeId => state.fishTypes[typeId])
@@ -41,14 +43,18 @@ function NewAppointmentForm({ type }) {
         } else if (type === 'health') {
             appointmentTypeId = 6;
         }
+        console.log(time)
         const payload = {
             description,
-            dateTime,
+            date,
+            time,
             streetAddress,
             city,
             fishTypeId,
             zipCode,
-            userId
+            userId,
+            appointmentTypeId,
+            imageUrl
         }
 
         // console.log(description, dateTime, streetAddress, city, fishTypeId, zipCode, appointmentTypeId, userId)
@@ -66,12 +72,18 @@ function NewAppointmentForm({ type }) {
             <div>
 
                 <label>Date</label>
-                <input type="datetime-local" name='dateTime' value={dateTime} onChange={e => setDateTime(e.target.value)} required />
+                <input type="date" name='date' value={date} onChange={e => setDate(e.target.value)} required />
+            </div>
+
+            <div>
+
+                <label>Time</label>
+                <input type="time" name='time' value={time} onChange={e => setTime(e.target.value)} required />
             </div>
 
             <div>
                 <label>Image</label>
-                <input type="text" name='image' required />
+                <input type="text" name='image' value={imageUrl} onChange={e => setImageUrl(e.target.value)} required />
             </div>
 
             <div>

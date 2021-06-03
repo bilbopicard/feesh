@@ -1,0 +1,23 @@
+body{
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 0;
+}
+
+#appointment-type-container {
+    border: 2px solid red;
+    width: 60%;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.home-inner-type-div {
+    border: 2px solid green;
+    box-sizing: border-box;
+    width: 16.66%;
+    height: 50%;
+    text-align: center;
+}
