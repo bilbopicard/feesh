@@ -9,7 +9,8 @@ def seed_appointments():
 
     trying = Appointment(user_id=1,
                          description='what is this',
-                         date_time=datetime.date.today(),
+                         date=datetime.date.today(),
+                         time=datetime.datetime.now().time(),
                          image_url='https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2756&q=80',
                          street_address='231123 Old Road',
                          city='San Francisco',

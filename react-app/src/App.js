@@ -12,6 +12,7 @@ import Test from "./components/Test";
 import { authenticate } from "./store/session";
 import { displayAppointments } from "./store/appointments";
 import NewAppointment from './components/NewAppointment';
+import MyAppointments from './components/MyAppointments';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -42,14 +43,17 @@ function App() {
         <ProtectedRoute path="/users" exact={true} >
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} >
-          <User />
+        <ProtectedRoute path="/appointments" exact={true} >
+          <MyAppointments />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} >
           <Homepage />
         </ProtectedRoute>
         <ProtectedRoute path="/appointments/new/:type" exact={true} >
           <NewAppointment />
+        </ProtectedRoute>
+        <ProtectedRoute path='/test'>
+          <Test />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

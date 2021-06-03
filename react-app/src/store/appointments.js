@@ -1,4 +1,5 @@
 const GET_APPOINTMENTS = 'appointments/GET_APPOINTMENTS'
+const ADD_APPOINTMENT = 'appointments/ADD_APPOINTMENT'
 
 const getAppointments = (list) => {
     return {
@@ -6,6 +7,13 @@ const getAppointments = (list) => {
         list
     }
 };
+
+const addAppointment = (payload) => {
+    return {
+        type: ADD_APPOINTMENT,
+        payload
+    }
+}
 
 export const displayAppointments = () => async (dispatch) => {
     const response = await fetch('/api/appointments/');
@@ -17,15 +25,20 @@ export const displayAppointments = () => async (dispatch) => {
 }
 
 export const createAppointment = (payload) => async (dispatch) => {
-    const { userId, description } = payload;
-    console.log('.......FROM STORE......', userId, description)
-    const response = await fetch('/api/appointments', {
+    const { dateTime } = payload;
+    console.log('.......FROM STORE......', dateTime)
+    const response = await fetch('/api/appointments/', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(payload)
     })
+    if (response.ok) {
+        // console.log('yay')
+        const data = await response.json();
+        dispatch(addAppointment(data))
+    }
 }
 
 const initialState = {
@@ -49,6 +62,8 @@ export default function appointmentReducer(state = initialState, action) {
                 ...nextState,
                 list: sortList(action.list.appointments)
             };
+        case ADD_APPOINTMENT:
+            return { ...state, ...action.payload }
         default:
             return state;
     }

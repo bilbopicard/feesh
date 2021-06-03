@@ -15,6 +15,7 @@ def seed_appointment_types():
     db.session.add(type3)
     db.session.add(type4)
     db.session.add(type5)
+    db.session.add(type6)
 
     db.session.commit()
 
