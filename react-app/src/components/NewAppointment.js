@@ -11,7 +11,7 @@ function NewAppointment() {
         <div>
             <h1>{type} Form</h1>
             <h2>This is the best form</h2>
-            <NewAppointmentForm />
+            <NewAppointmentForm type={type} />
         </div>
     );
 }

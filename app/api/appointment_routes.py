@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Appointment
 
@@ -12,11 +12,13 @@ def appointments():
     return {"appointments": [appointment.to_dict() for appointment in appointments]}
 
 
-# @appointment_routes.route('/', methods=['POST'])
-# @login_required
-# def appointments():
-#     appointments = Appointment.query.all()
-#     return {"appointments": [appointment.to_dict() for appointment in appointments]}
+@appointment_routes.route('/', methods=['POST'])
+@login_required
+def create_appointment():
+    print('FROM BACKEND', request.data)
+    # appointments = Appointment.query.all()
+    # return {"appointments": [appointment.to_dict() for appointment in appointments]}
+
 
 @appointment_routes.route('/<int:id>')
 @login_required

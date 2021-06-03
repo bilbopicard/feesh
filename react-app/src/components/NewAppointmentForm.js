@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { displayFishTypes } from '../store/fishtypes';
+import { createAppointment } from '../store/appointments';
 
-function NewAppointmentForm() {
+function NewAppointmentForm({ type }) {
 
     const dispatch = useDispatch();
+
+    const userId = useSelector(state => state.session.user.id)
 
     const [description, setDescription] = useState('')
     const [dateTime, setDateTime] = useState('')
@@ -24,7 +27,32 @@ function NewAppointmentForm() {
     const submitForm = async (e) => {
         e.preventDefault()
 
-        console.log(description, dateTime, streetAddress, city, fishTypeId, zipCode)
+        let appointmentTypeId = ''
+        if (type === 'feeding') {
+            appointmentTypeId = 1;
+        } else if (type === 'training') {
+            appointmentTypeId = 2;
+        } else if (type === 'drop-in') {
+            appointmentTypeId = 3;
+        } else if (type === 'boarding') {
+            appointmentTypeId = 4;
+        } else if (type === 'sitting') {
+            appointmentTypeId = 5;
+        } else if (type === 'health') {
+            appointmentTypeId = 6;
+        }
+        const payload = {
+            description,
+            dateTime,
+            streetAddress,
+            city,
+            fishTypeId,
+            zipCode,
+            userId
+        }
+
+        // console.log(description, dateTime, streetAddress, city, fishTypeId, zipCode, appointmentTypeId, userId)
+        dispatch(createAppointment(payload))
     }
 
     return (
@@ -41,10 +69,10 @@ function NewAppointmentForm() {
                 <input type="datetime-local" name='dateTime' value={dateTime} onChange={e => setDateTime(e.target.value)} required />
             </div>
 
-            {/* <div>
-                <label>Time</label>
-                <input type="time" />
-            </div> */}
+            <div>
+                <label>Image</label>
+                <input type="text" name='image' required />
+            </div>
 
             <div>
                 <label>Address</label>

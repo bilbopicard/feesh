@@ -8,6 +8,7 @@ def seed_appointment_types():
     type3 = AppointmentType(appointment_type='Drop-In')
     type4 = AppointmentType(appointment_type='Boarding')
     type5 = AppointmentType(appointment_type='Sitting')
+    type6 = AppointmentType(appointment_type='Health')
 
     db.session.add(type1)
     db.session.add(type2)
