@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import NewAppointmentForm from './NewAppointmentForm';
-
+import './styles/newAppointment.css'
 
 function NewAppointment() {
 
@@ -11,7 +11,7 @@ function NewAppointment() {
     type = type[0].toUpperCase() + type.slice(1)
 
     return (
-        <div>
+        <div id='new-appointment-outer-div'>
             <h1>{type} Form</h1>
             <NewAppointmentForm type={type} />
         </div>

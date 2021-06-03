@@ -26,6 +26,8 @@ function Homepage() {
 
     return (
         <div>
+            <h1 id='homepage-h1'>Feesh</h1>
+            <h3 id='homepage-h3'>We feed fish</h3>
             <div id='appointment-type-container'>
                 <div className={`home-inner-type-div ${active === 'feeding' ? 'active' : ''}`} id='feeding' onClick={divClick}>Feeding</div>
                 <div className={`home-inner-type-div ${active === 'training' ? 'active' : ''}`} id='training' onClick={divClick}>Training</div>
@@ -33,7 +35,9 @@ function Homepage() {
                 <div className={`home-inner-type-div ${active === 'health' ? 'active' : ''}`} id='health' onClick={divClick}>Health</div>
                 <div className={`home-inner-type-div ${active === 'sitting' ? 'active' : ''}`} id='sitting' onClick={divClick}>Sitting</div>
                 <div className={`home-inner-type-div ${active === 'boarding' ? 'active' : ''}`} id='boarding' onClick={divClick}>Boarding</div>
-                <HomeBlurb active={active} />
+                <div id='homepage-lower-div'>
+                    <HomeBlurb active={active} />
+                </div>
             </div>
         </div>
     );

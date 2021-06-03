@@ -30,10 +30,10 @@ function HomeBlurb({ active }) {
     }
 
     return (
-        <div>
+        <>
             <p>{text}</p>
             <NavLink to={`/appointments/new/${active}`}>{insideText}</NavLink>
-        </div>
+        </>
     );
 }
 export default HomeBlurb;

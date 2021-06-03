@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { displayAppointments } from "../store/appointments";
 import './styles/homepage.css'
 import HomeBlurb from './HomeBlurb';
+import './styles/myAppointments.css';
 
 function MyAppointments() {
 
@@ -22,9 +23,10 @@ function MyAppointments() {
     }, [dispatch])
 
     return (
-        <div>
+        <div id='my-appointment-outer-div'>
+            <h1 id='my-appointments-h1'>My Appointments</h1>
             {myAppointments.map(appointment => (
-                <div>
+                <div id='my-appointment-inner-div' className={appointment.completed ? 'completed' : ''}>
                     {appointment.appointment_type}
                     <br />
                     {appointment.description}

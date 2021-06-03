@@ -7,7 +7,7 @@ body{
 #appointment-type-container {
     border: 2px solid red;
     width: 60%;
-    height: 300px;
+    height: 50vh;
     margin: auto;
     display: flex;
     justify-content: space-around;
@@ -20,4 +20,41 @@ body{
     width: 16.66%;
     height: 50%;
     text-align: center;
+}
+
+.home-inner-type-div:hover {
+    cursor: pointer;
+    background-color: lightblue;
+}
+
+#homepage-h1 {
+    text-align: center;
+}
+
+#homepage-h3 {
+    text-align: center;
+}
+
+#homepage-lower-div {
+    border: 2px solid blue;
+    width: 100%;
+    height: 25vh;
+    /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#homepage-lower-div p{
+    border: 2px solid blue;
+    box-sizing: border-box;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto 20px;
+}
+
+#homepage-lower-div a{
+    border: 2px solid pink;
+    margin: 0 auto;
 }

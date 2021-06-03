@@ -1,0 +1,17 @@
+#my-appointment-outer-div {
+    border: 2px solid red;
+    width: 60%;
+    margin: auto;
+}
+
+#my-appointment-inner-div {
+    border: 2px solid blue;
+}
+
+#my-appointments-h1 {
+    text-align: center;
+}
+
+.completed {
+    background-color: green;
+}
