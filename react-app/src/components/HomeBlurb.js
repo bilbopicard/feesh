@@ -33,7 +33,7 @@ function HomeBlurb({ active }) {
     return (
         <>
             <p>{text}</p>
-            <NavLink id='blurb-link' to={`/appointments/new/${active}`}>{insideText}</NavLink>
+            <NavLink id='blurb-link' to={`/appointments/new/${active}`}>Schedule {insideText}</NavLink>
         </>
     );
 }
