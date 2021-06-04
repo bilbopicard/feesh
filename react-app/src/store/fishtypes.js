@@ -9,7 +9,7 @@ const getFishTypes = (list) => {
 
 export const displayFishTypes = () => async (dispatch) => {
     const response = await fetch('/api/fish-types/');
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         const data = await response.json();
         dispatch(getFishTypes(data))

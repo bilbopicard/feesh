@@ -5,6 +5,7 @@ import { createAppointment } from '../store/appointments';
 
 function NewAppointmentForm({ type }) {
 
+    // console.log(type)
     const dispatch = useDispatch();
 
     const userId = useSelector(state => state.session.user.id)
@@ -30,20 +31,20 @@ function NewAppointmentForm({ type }) {
         e.preventDefault()
 
         let appointmentTypeId = ''
-        if (type === 'feeding') {
+        if (type === 'Feeding') {
             appointmentTypeId = 1;
-        } else if (type === 'training') {
+        } else if (type === 'Training') {
             appointmentTypeId = 2;
-        } else if (type === 'drop-in') {
+        } else if (type === 'Drop-in') {
             appointmentTypeId = 3;
-        } else if (type === 'boarding') {
+        } else if (type === 'Boarding') {
             appointmentTypeId = 4;
-        } else if (type === 'sitting') {
+        } else if (type === 'Sitting') {
             appointmentTypeId = 5;
-        } else if (type === 'health') {
+        } else if (type === 'Health') {
             appointmentTypeId = 6;
         }
-        console.log(time)
+        // console.log(time)
         const payload = {
             description,
             date,
@@ -108,7 +109,7 @@ function NewAppointmentForm({ type }) {
                 <select name="fish_type" id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
                     <option>-- Select a type --</option>
                     {fishTypes.map(type => (
-                        <option value={type.id}>{type.fish_type}</option>
+                        <option value={type.id} key={type.id}>{type.fish_type}</option>
                     ))}
                 </select>
             </div>

@@ -7,12 +7,15 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
-                password='password', feeder=True)
+                password='password', feeder=True, zip_code=95112)
     user2 = User(username='Bobby', email='bobby@gmail.com',
-                 password='password')
+                 password='password', zip_code=10001)
+    user3 = User(username='Goku', email='goku@goku.com',
+                 password='password', feeder=True, zip_code=94016)
 
     db.session.add(demo)
     db.session.add(user2)
+    db.session.add(user3)
 
     db.session.commit()
 

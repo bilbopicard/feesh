@@ -8,11 +8,12 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Homepage from './components/Homepage';
-import Test from "./components/Test";
 import { authenticate } from "./store/session";
 import { displayAppointments } from "./store/appointments";
 import NewAppointment from './components/NewAppointment';
 import MyAppointments from './components/MyAppointments';
+import SingleAppointment from './components/SingleAppointment';
+import FindAppointments from './components/FindAppointments';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -52,8 +53,11 @@ function App() {
         <ProtectedRoute path="/appointments/new/:type" exact={true} >
           <NewAppointment />
         </ProtectedRoute>
-        <ProtectedRoute path='/test'>
-          <Test />
+        <ProtectedRoute path='/appointments/:appointmentId' exact={true} >
+          <SingleAppointment />
+        </ProtectedRoute>
+        <ProtectedRoute path='/find' exact={true} >
+          <FindAppointments />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

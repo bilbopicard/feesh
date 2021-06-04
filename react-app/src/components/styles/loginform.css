@@ -1,0 +1,27 @@
+#login-upper-div {
+    border: 2px solid red;
+    /* display: flex; */
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+#login-upper-div h1 {
+    font-size: 4rem;
+}
+
+#login-logo {
+    width: 20%;
+}
+
+.login-inner-div {
+    border: 2px solid blue;
+    display: flex;
+    justify-content: space-between;
+}
+
+#login-container form {
+    border: 2px solid green;
+    width: 40%;
+    margin: auto;
+}

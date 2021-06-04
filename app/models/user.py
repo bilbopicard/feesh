@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     feeder = db.Column(db.Boolean, nullable=False, default=False)
+    zip_code = db.Column(db.Integer, nullable=False)
 
     @property
     def password(self):
@@ -28,5 +29,6 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "feeder": self.feeder
+            "feeder": self.feeder,
+            "zip_code": self.zip_code
         }
