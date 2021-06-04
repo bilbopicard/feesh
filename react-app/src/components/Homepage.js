@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { displayAppointments } from "../store/appointments";
 import './styles/homepage.css'
 import HomeBlurb from './HomeBlurb';
+import Map from './Map';
 
 function Homepage() {
 
@@ -12,7 +13,7 @@ function Homepage() {
 
     const divClick = (e) => {
         const clicked = e.target.id;
-        console.log(clicked)
+        // console.log(clicked)
         if (active === clicked) {
             setActive(active)
         } else {
@@ -39,6 +40,7 @@ function Homepage() {
                     <HomeBlurb active={active} />
                 </div>
             </div>
+
         </div>
     );
 }

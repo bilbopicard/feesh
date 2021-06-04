@@ -17,7 +17,7 @@ const addAppointment = (payload) => {
 
 export const displayAppointments = () => async (dispatch) => {
     const response = await fetch('/api/appointments/');
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         const data = await response.json();
         dispatch(getAppointments(data))
@@ -25,8 +25,8 @@ export const displayAppointments = () => async (dispatch) => {
 }
 
 export const createAppointment = (payload) => async (dispatch) => {
-    const { dateTime } = payload;
-    console.log('.......FROM STORE......', dateTime)
+    const { appointmentTypeId } = payload;
+    // console.log('.......FROM STORE......', appointmentTypeId)
     const response = await fetch('/api/appointments/', {
         method: "POST",
         headers: {

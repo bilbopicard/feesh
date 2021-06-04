@@ -31,6 +31,11 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to='/find'>
+            Appointments Near Me
+          </NavLink>
+        </li>
+        <li>
           <LogoutButton />
         </li>
       </ul>

@@ -56,5 +56,13 @@ body{
 
 #homepage-lower-div a{
     border: 2px solid pink;
+    text-decoration: none;
+    color: inherit;
     margin: 0 auto;
+    padding: 8px 20px;
+    background-color: grey;
+}
+
+#homepage-lower-div a:hover{
+    background-color: lightgrey;
 }

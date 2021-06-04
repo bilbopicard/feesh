@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { displayAppointments } from "../store/appointments";
+import './styles/homeblurb.css'
 
 function HomeBlurb({ active }) {
 
@@ -32,7 +33,7 @@ function HomeBlurb({ active }) {
     return (
         <>
             <p>{text}</p>
-            <NavLink to={`/appointments/new/${active}`}>{insideText}</NavLink>
+            <NavLink id='blurb-link' to={`/appointments/new/${active}`}>{insideText}</NavLink>
         </>
     );
 }
