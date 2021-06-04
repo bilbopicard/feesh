@@ -63,7 +63,7 @@ function NewAppointmentForm({ type }) {
     }
 
     return (
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} id='new-appointment-form'>
 
             <div>
                 <label>Description</label>

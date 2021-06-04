@@ -1,0 +1,30 @@
+nav{
+    /* border: 2px solid red; */
+    box-shadow: 0px 2px 2px 2px rgb(140,82,255);
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+nav img { 
+    width: 100px;
+}
+
+nav a{
+    text-decoration: none; 
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav ul {
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}

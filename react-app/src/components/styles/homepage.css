@@ -4,27 +4,43 @@ body{
     padding: 0;
 }
 
+#homepage-outer-container {
+    margin-top:  140px;
+}
+
 #appointment-type-container {
-    border: 2px solid red;
+    border: 2px solid black;
     width: 60%;
     height: 50vh;
     margin: auto;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    border-radius: 10px;
 }
 
 .home-inner-type-div {
-    border: 2px solid green;
+    /* border: 2px solid green; */
+    /* border-left: 1px solid black; */
+    /* border-right: 1px solid black; */
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     width: 16.66%;
     height: 50%;
     text-align: center;
+    border-radius: 10px;
+}
+
+.home-inner-type-div img{
+    width: 90%;
 }
 
 .home-inner-type-div:hover {
     cursor: pointer;
-    background-color: lightblue;
+    background-color: rgba(173, 216, 230, 0.5);
 }
 
 #homepage-h1 {
@@ -36,7 +52,8 @@ body{
 }
 
 #homepage-lower-div {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
+    border-top: 1px solid black;
     width: 100%;
     height: 25vh;
     /* padding: 20px; */
@@ -47,7 +64,7 @@ body{
 }
 
 #homepage-lower-div p{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     box-sizing: border-box;
     width: 90%;
     text-align: center;
