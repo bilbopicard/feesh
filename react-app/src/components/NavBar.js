@@ -36,13 +36,17 @@ const NavBar = () => {
 
         {user && <li>
           <NavLink to="/appointments" exact={true} className="nav-link">
-            My Appointments
+            My Calendar
           </NavLink>
         </li>}
 
-        {user?.feeder === true && <li>
+        {user && user?.feeder ? <li>
           <NavLink to='/find' className="nav-link">
-            Appointments Near Me
+            Go Feeshing
+          </NavLink>
+        </li> : <li>
+          <NavLink to='/getcertified' className="nav-link">
+            Become Feesh Certified
           </NavLink>
         </li>}
 

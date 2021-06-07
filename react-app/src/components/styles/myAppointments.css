@@ -1,11 +1,50 @@
 #my-appointment-outer-div {
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    text-decoration: none;
     width: 60%;
+    height: 80vh;
     margin: auto;
 }
 
-#my-appointment-inner-div {
-    border: 2px solid blue;
+#my-appointment-outer-div h2 {
+    margin-top: 0;
+}
+
+#my-appointments-flex-container {
+    display: flex;
+    border: 4px solid rgb(140,82,255);
+    border-radius: 4px;
+    height: 64vh;
+}
+
+#not-completed {
+    width: 50%;
+    border-right: 2px solid rgb(140,82,255);
+}
+
+#my-appointments-flex-container h2 {
+    text-align: center;
+}
+
+#completed {
+    width: 50%;
+}
+
+.my-appointments-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.my-appointment-inner-div {
+    border: 2px solid rgb(0,194,203);
+    padding: 10px;
+    height: 6vh;
+    background-color: white;
+    overflow-y: hidden;
+}
+
+.my-appointment-inner-div:hover {
+   height: auto;
 }
 
 #my-appointments-h1 {

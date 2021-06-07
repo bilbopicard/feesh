@@ -14,6 +14,7 @@ import NewAppointment from './components/NewAppointment';
 import MyAppointments from './components/MyAppointments';
 import SingleAppointment from './components/SingleAppointment';
 import FindAppointments from './components/FindAppointments';
+import EditAppointment from './components/EditAppointment';
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -58,6 +59,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/find' exact={true} >
           <FindAppointments />
+        </ProtectedRoute>
+        <ProtectedRoute path='/getcertified'>
+          <h2>get certified</h2>
+        </ProtectedRoute>
+        <ProtectedRoute path='/appointments/:id/edit'>
+          <EditAppointment />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

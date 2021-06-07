@@ -7,7 +7,6 @@ class Appointment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False)
-    feeder_id = db.Column(db.Integer, default=0)
     description = db.Column(db.Text, nullable=False)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.Time, nullable=False)
@@ -16,6 +15,8 @@ class Appointment(db.Model):
     street_address = db.Column(db.Text, nullable=False)
     city = db.Column(db.String(100), nullable=False)
     zip_code = db.Column(db.String(9), nullable=False)
+
+    feeder_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     appointment_type_id = db.Column(
         db.Integer, db.ForeignKey('appointment_types.id'))
@@ -26,6 +27,7 @@ class Appointment(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "feeder_id": self.feeder_id,
+            "feeder": self.feeder.username if self.feeder_id else None,
             "description": self.description,
             "completed": self.completed,
             "image_url": self.image_url,

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 83ff63ec8320
+Revision ID: 834f1c19661b
 Revises: 
-Create Date: 2021-06-04 12:18:27.702150
+Create Date: 2021-06-07 13:42:23.260094
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '83ff63ec8320'
+revision = '834f1c19661b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,7 +42,6 @@ def upgrade():
     op.create_table('appointments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('feeder_id', sa.Integer(), nullable=True),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('time', sa.Time(), nullable=False),
@@ -51,9 +50,11 @@ def upgrade():
     sa.Column('street_address', sa.Text(), nullable=False),
     sa.Column('city', sa.String(length=100), nullable=False),
     sa.Column('zip_code', sa.String(length=9), nullable=False),
+    sa.Column('feeder_id', sa.Integer(), nullable=True),
     sa.Column('appointment_type_id', sa.Integer(), nullable=True),
     sa.Column('fish_type_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['appointment_type_id'], ['appointment_types.id'], ),
+    sa.ForeignKeyConstraint(['feeder_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['fish_type_id'], ['fish_types.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
