@@ -25,17 +25,20 @@ function MyAppointments() {
     }, [dispatch])
 
     return (
-        <div id='my-appointment-outer-div'>
-            <h2>{user}</h2>
-            <h1 id='my-appointments-h1'>My Appointments</h1>
-            {myAppointments.map(appointment => (
-                <div id='my-appointment-inner-div' className={appointment.completed ? 'completed' : ''} key={appointment.id}>
-                    {appointment.appointment_type}
-                    <br />
-                    {appointment.description}
-                </div>
-            ))}
-        </div>
+        <>
+            <div class='nav-empty-div'></div>
+            <div id='my-appointment-outer-div'>
+                <h2>{user}</h2>
+                <h1 id='my-appointments-h1'>My Appointments</h1>
+                {myAppointments.map(appointment => (
+                    <div id='my-appointment-inner-div' className={appointment.completed ? 'completed' : ''} key={appointment.id}>
+                        {appointment.appointment_type}
+                        <br />
+                        {appointment.description}
+                    </div>
+                ))}
+            </div>
+        </>
     );
 }
 export default MyAppointments;

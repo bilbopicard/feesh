@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
 nav{
     /* border: 2px solid red; */
-    box-shadow: 0px 2px 2px 2px rgb(140,82,255);
+    box-shadow: 0px 2px 2px 2px rgba(140,82,255, 0.75);
     width: 100%;
     position: fixed;
     top: 0;
+    height: 100px;
+    background-color:rgb(0,194,203);
+    z-index: 1;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav img { 
@@ -12,6 +18,34 @@ nav img {
 
 nav a{
     text-decoration: none; 
+}
+
+.nav-link{
+    text-decoration: none; 
+    padding: 4px 8px;
+    font-size: 1.4rem;
+    color: white
+}
+
+.nav-link:hover {
+    text-decoration: none; 
+    font-size: 1.4rem;
+    color: rgb(140,82,255);
+}
+.nav-btn {
+    border: none;
+    padding: 5px 12px;
+    border-radius: 40px;
+    background-color: rgb(0,194,203);
+    font-size: 1.4rem;
+    color: white;
+}
+
+.nav-btn:hover {
+    cursor: pointer;
+    text-decoration: none; 
+    font-size: 1.4rem;
+    color: rgb(140,82,255);
 }
 
 nav li {
@@ -25,6 +59,11 @@ nav ul {
     align-items: center;
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
-    width: 100%;
+    margin: 0 auto;
+    width: 96%;
+    height: 100px;
+}
+
+.nav-empty-div {
+    height: 120px;
 }

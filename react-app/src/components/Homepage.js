@@ -32,42 +32,45 @@ function Homepage() {
     }, [dispatch])
 
     return (
-        <div id='homepage-outer-container'>
-            <h1 id='homepage-h1'>Feesh</h1>
-            <div id='appointment-type-container'>
-                <div className={`home-inner-type-div ${active === 'feeding' ? 'active' : ''}`} id='feeding' onClick={divClick}>
-                    Feeding
+        <>
+            <div class='nav-empty-div'></div>
+            <div id='homepage-outer-container'>
+                <h1 id='homepage-h1'>Feesh</h1>
+                <div id='appointment-type-container'>
+                    <div className={`home-inner-type-div ${active === 'feeding' ? 'active' : ''}`} id='feeding' onClick={divClick}>
+                        Feeding
                     <img src={feedingImage} alt="" id='feeding' />
-                </div>
-                <div className={`home-inner-type-div ${active === 'training' ? 'active' : ''}`} id='training' onClick={divClick}>
-                    Training
+                    </div>
+                    <div className={`home-inner-type-div ${active === 'training' ? 'active' : ''}`} id='training' onClick={divClick}>
+                        Training
                     <img src={trainingImage} alt="" id='training' />
-                </div>
-                <div className={`home-inner-type-div ${active === 'drop-in' ? 'active' : ''}`} id='drop-in' onClick={divClick}>
-                    Drop-In
+                    </div>
+                    <div className={`home-inner-type-div ${active === 'drop-in' ? 'active' : ''}`} id='drop-in' onClick={divClick}>
+                        Drop-In
                     <img src={dropInImage} alt="" id='drop-in' />
-                </div>
-                <div className={`home-inner-type-div ${active === 'health' ? 'active' : ''}`} id='health' onClick={divClick}>
-                    Health Check
+                    </div>
+                    <div className={`home-inner-type-div ${active === 'health' ? 'active' : ''}`} id='health' onClick={divClick}>
+                        Health Check
                     <img src={healthImage} alt="" id='health' />
-                </div>
-                <div className={`home-inner-type-div ${active === 'sitting' ? 'active' : ''}`} id='sitting' onClick={divClick}>
-                    Sitting
+                    </div>
+                    <div className={`home-inner-type-div ${active === 'sitting' ? 'active' : ''}`} id='sitting' onClick={divClick}>
+                        Sitting
                     <img src={sittingImage} alt="" id='sitting' />
-                </div>
-                <div className={`home-inner-type-div ${active === 'boarding' ? 'active' : ''}`} id='boarding' onClick={divClick}>
-                    Boarding
+                    </div>
+                    <div className={`home-inner-type-div ${active === 'boarding' ? 'active' : ''}`} id='boarding' onClick={divClick}>
+                        Boarding
                     <img src={boardingImage} alt="" id='boarding' />
+                    </div>
+                    <div id='homepage-lower-div'>
+                        <HomeBlurb active={active} />
+                    </div>
                 </div>
-                <div id='homepage-lower-div'>
-                    <HomeBlurb active={active} />
-                </div>
-            </div>
-            <h3 id='homepage-h3'> - We feed fish</h3>
-            {/* <p>
+                <h3 id='homepage-h3'> - We feed fish</h3>
+                {/* <p>
                 What is Feesh? Why is Feesh? These are valid questions.
             </p> */}
-        </div>
+            </div>
+        </>
     );
 }
 export default Homepage;
