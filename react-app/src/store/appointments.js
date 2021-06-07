@@ -1,5 +1,6 @@
-const GET_APPOINTMENTS = 'appointments/GET_APPOINTMENTS'
-const ADD_APPOINTMENT = 'appointments/ADD_APPOINTMENT'
+const GET_APPOINTMENTS = 'appointments/GET_APPOINTMENTS';
+const ADD_APPOINTMENT = 'appointments/ADD_APPOINTMENT';
+const UPDATE_APPOINTMENT = 'appointments/UPDATE_APPOINTMENT';
 
 const getAppointments = (list) => {
     return {
@@ -29,6 +30,23 @@ export const createAppointment = (payload) => async (dispatch) => {
     // console.log('.......FROM STORE......', appointmentTypeId)
     const response = await fetch('/api/appointments/', {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        // console.log('yay')
+        const data = await response.json();
+        dispatch(addAppointment(data))
+    }
+}
+
+export const updateAppointment = (payload) => async (dispatch) => {
+    const { appointmentId, time } = payload;
+    console.log(time)
+    const response = await fetch(`/api/appointments/${appointmentId}`, {
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },

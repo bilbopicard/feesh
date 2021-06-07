@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import NewAppointmentForm from './NewAppointmentForm';
 import { displayFishTypes } from '../store/fishtypes';
 import { displayAppointments } from '../store/appointments';
-
+import { updateAppointment } from '../store/appointments';
 
 function EditAppointment() {
 
@@ -42,10 +42,50 @@ function EditAppointment() {
     const [zipCode, setZipCode] = useState(appointmentToEdit?.zip_code)
     const [imageUrl, setImageUrl] = useState(appointmentToEdit?.image_url)
     const [time, setTime] = useState(appointmentToEdit?.time)
+    const [appointmentTypeId, setAppointmentTypeId] = useState(appointmentToEdit?.appointment_type_id)
+    const appointmentId = appointmentToEdit?.id
 
     const fishTypes = useSelector(state => {
         return state.fishTypes.list.map(typeId => state.fishTypes[typeId])
     })
+
+    const appointmentTypes = [['Feeding', 1], ['Training', 2], ['Drop-in', 3], ['Boarding', 4], ['Sitting', 5], ['Health', 6]]
+
+    const submitForm = async (e) => {
+        e.preventDefault()
+
+        // let appointmentTypeId = ''
+        // if (type === 'Feeding') {
+        //     appointmentTypeId = 1;
+        // } else if (type === 'Training') {
+        //     appointmentTypeId = 2;
+        // } else if (type === 'Drop-in') {
+        //     appointmentTypeId = 3;
+        // } else if (type === 'Boarding') {
+        //     appointmentTypeId = 4;
+        // } else if (type === 'Sitting') {
+        //     appointmentTypeId = 5;
+        // } else if (type === 'Health') {
+        //     appointmentTypeId = 6;
+        // }
+        // console.log(time)
+        const payload = {
+            description,
+            date,
+            time,
+            streetAddress,
+            city,
+            fishTypeId,
+            zipCode,
+            userId,
+            appointmentTypeId,
+            imageUrl,
+            appointmentId
+        }
+
+        // console.log(description, dateTime, streetAddress, city, fishTypeId, zipCode, appointmentTypeId, userId)
+        dispatch(updateAppointment(payload))
+    }
 
     useEffect(() => {
         dispatch(displayAppointments())
@@ -55,11 +95,20 @@ function EditAppointment() {
     return (
         <>
             <div class='nav-empty-div'></div>
-            <form id='new-appointment-form'>
+            <form id='new-appointment-form' onSubmit={submitForm}>
 
                 <div>
                     <label>Description</label>
                     <input id="description" name='description' value={description} onChange={e => setDescription(e.target.value)} required />
+                </div>
+
+                <div>
+                    <label>Apointment Type</label>
+                    <select name="appointType" value={appointmentTypeId} onChange={e => setAppointmentTypeId(e.target.value)}>
+                        {appointmentTypes.map(type => (
+                            <option value={type[1]}>{type[0]}</option>
+                        ))}
+                    </select>
                 </div>
 
                 <div>
@@ -105,7 +154,7 @@ function EditAppointment() {
                         ))}
                     </select>
                 </div>
-                <button id="new-appointment-btn" type="submit">Create Appointment</button>
+                <button id="new-appointment-btn" type="submit">Update Appointment</button>
 
             </form>
         </>
