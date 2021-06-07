@@ -15,14 +15,14 @@
 
 #login-upper-div h1 {
     font-family: 'Bubblegum Sans', cursive;
-    font-size: 8rem;
-    padding-top: 30px;
+    font-size: 6rem;
+    padding-top: 50px;
     margin: 0;
     color: rgba(0,0,0, 0.75)
 }
 
 #login-logo {
-    width: 22%;
+    width: 20%;
 }
 
 .login-inner-div {

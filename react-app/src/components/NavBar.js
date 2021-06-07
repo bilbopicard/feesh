@@ -46,9 +46,9 @@ const NavBar = () => {
           </NavLink>
         </li>}
 
-        <li>
+        {user && <li>
           <LogoutButton />
-        </li>
+        </li>}
       </ul>
     </nav>
   );
