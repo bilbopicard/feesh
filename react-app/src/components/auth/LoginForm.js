@@ -34,51 +34,52 @@ const LoginForm = () => {
   }
 
   return (
-    <div id='login-container'>
-      <div id='login-upper-div'>
-        <div className='login-inner-div'>
-
-          <img id='login-logo' src={fishLogo} alt="feesh logo" />
-
-
-          <img id='login-logo' src={fishLogo2} alt="feesh logo" />
-
+    <>
+      <div class='nav-empty-div'></div>
+      <div id='login-container'>
+        <div id='login-upper-div'>
+          <div className='login-inner-div'>
+            <img id='login-logo' src={fishLogo} alt="feesh logo" />
+            <h1>Feesh</h1>
+            <img id='login-logo' src={fishLogo2} alt="feesh logo" />
+          </div>
         </div>
-        <div>
-          <h1>Feesh</h1>
+
+        <div id='login-lower-div'>
+          <h2>Login</h2>
+          <form onSubmit={onLogin}>
+            <div>
+              {errors.map((error) => (
+                <div key={error}>{error}</div>
+              ))}
+            </div>
+            <div className='login-input-div'>
+              <label htmlFor="email">Email</label>
+              <br />
+              <input
+                name="email"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div className='login-input-div'>
+              <label htmlFor="password">Password</label>
+              <br />
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={updatePassword}
+              />
+              <button type="submit">Login</button>
+            </div>
+          </form>
         </div>
       </div>
-
-      <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error) => (
-            <div key={error}>{error}</div>
-          ))}
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={updatePassword}
-          />
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
-
+    </>
   );
 };
 

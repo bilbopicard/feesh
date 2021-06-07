@@ -22,7 +22,7 @@ export default function DemoUser() {
 
     return (
         <form onSubmit={onLogin}>
-            <button id="auth-nav-btn" type="submit">DemoUser</button>
+            <button id="auth-nav-btn" type="submit" className='nav-btn'>DemoUser</button>
         </form>
     );
 }

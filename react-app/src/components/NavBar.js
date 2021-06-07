@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import DemoUser from './auth/DemoUser';
 import LogoutButton from './auth/LogoutButton';
 import './styles/navbar.css';
-import feeshLogo from '../images/feesh-logo.svg';
+import feeshLogo from '../images/feesh-logo-2.svg';
 import { useSelector, useStore } from 'react-redux';
 
 const NavBar = () => {
@@ -14,7 +14,7 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" exact={true}>
             <img src={feeshLogo} alt="" />
           </NavLink>
         </li>
@@ -23,24 +23,25 @@ const NavBar = () => {
         </li>}
 
         {!user && <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
+          <NavLink to="/login" exact={true} className="nav-link">
             Login
           </NavLink>
         </li>}
 
         {!user && <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+          <NavLink to="/sign-up" exact={true} className="nav-link">
             Sign Up
           </NavLink>
         </li>}
 
-        <li>
-          <NavLink to="/appointments" exact={true} activeClassName="active">
+        {user && <li>
+          <NavLink to="/appointments" exact={true} className="nav-link">
             My Appointments
           </NavLink>
-        </li>
+        </li>}
+
         {user?.feeder === true && <li>
-          <NavLink to='/find'>
+          <NavLink to='/find' className="nav-link">
             Appointments Near Me
           </NavLink>
         </li>}

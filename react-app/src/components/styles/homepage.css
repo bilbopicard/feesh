@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+
 body{
-    background-color: whitesmoke;
+    background-color: white;
     margin: 0;
     padding: 0;
-}
-
-#homepage-outer-container {
-    margin-top:  140px;
+    /* font-family: 'Itim', cursive; */
 }
 
 #appointment-type-container {
@@ -17,6 +17,7 @@ body{
     justify-content: space-around;
     flex-wrap: wrap;
     border-radius: 10px;
+    
 }
 
 .home-inner-type-div {

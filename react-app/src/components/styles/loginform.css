@@ -1,31 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
+
 #login-container {
-    margin-top: 125px;
+    font-family: 'Poppins', sans-serif;
 }
 
 #login-upper-div {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     /* display: flex; */
-    width: 60%;
+    width: 70%;
     margin: auto;
     text-align: center;
 }
 
 #login-upper-div h1 {
-    font-size: 4rem;
+    font-size: 6rem;
+    color: rgba(0,0,0, 0.75)
 }
 
 #login-logo {
-    width: 20%;
+    width: 26%;
 }
 
 .login-inner-div {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     justify-content: space-between;
 }
 
+
+#login-lower-div {
+    box-sizing: border-box;
+    /* border: 2px solid orange; */
+    box-shadow: 0 0 2px 4px rgb(0,194,203);
+    padding: 20px;
+    width: 30%;
+    margin: 20px auto;
+    background-color: whitesmoke;
+}
+
+#login-lower-div h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
 #login-container form {
-    border: 2px solid green;
-    width: 40%;
+    box-sizing: border-box;
+    /* border: 2px solid green; */
+    width: 100%;
     margin: auto;
+}
+
+.login-input-div {
+    box-sizing: border-box;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.login-input-div label {
+    font-size: 1.4rem;
+}
+
+.login-input-div input{
+    margin-top: 10px;
+    width: 90%;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
 }
