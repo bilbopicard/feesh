@@ -16,6 +16,13 @@ const addAppointment = (payload) => {
     }
 }
 
+const editAppointment = (payload) => {
+    return {
+        type: UPDATE_APPOINTMENT,
+        payload
+    }
+}
+
 export const displayAppointments = () => async (dispatch) => {
     const response = await fetch('/api/appointments/');
     // console.log(response)
@@ -26,8 +33,8 @@ export const displayAppointments = () => async (dispatch) => {
 }
 
 export const createAppointment = (payload) => async (dispatch) => {
-    const { appointmentTypeId } = payload;
-    // console.log('.......FROM STORE......', appointmentTypeId)
+    const { appointmentTypeId, time } = payload;
+    console.log('.......FROM STORE......', time)
     const response = await fetch('/api/appointments/', {
         method: "POST",
         headers: {
@@ -44,7 +51,8 @@ export const createAppointment = (payload) => async (dispatch) => {
 
 export const updateAppointment = (payload) => async (dispatch) => {
     const { appointmentId, time } = payload;
-    console.log(time)
+
+    console.log(payload)
     const response = await fetch(`/api/appointments/${appointmentId}`, {
         method: "PUT",
         headers: {
@@ -55,7 +63,8 @@ export const updateAppointment = (payload) => async (dispatch) => {
     if (response.ok) {
         // console.log('yay')
         const data = await response.json();
-        dispatch(addAppointment(data))
+        console.log(data)
+        dispatch(editAppointment(data))
     }
 }
 
@@ -82,6 +91,9 @@ export default function appointmentReducer(state = initialState, action) {
             };
         case ADD_APPOINTMENT:
             return { ...state, ...action.payload }
+        case UPDATE_APPOINTMENT:
+            state[action.payload.id] = action.payload
+            return { ...state }
         default:
             return state;
     }

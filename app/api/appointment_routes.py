@@ -53,25 +53,25 @@ def get_appointment(id):
 def edit_appointment(id):
     form = AppointmentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
-    # if form.validate_on_submit():
-    #     print('inside validation lol')
+    print(form.data['time'])
+    if form.validate_on_submit():
+        print('inside validation lol')
     #     return 'whats up'
-    #     appointment_to_update = Appointment.query.get(id)
-    #     appointment_to_update.user_id = form.data['userId'],
-    #     appointment_to_update.description = form.data['description'],
-    #     appointment_to_update.date = form.data['date'],
-    #     appointment_to_update.time = form.data['time'],
-    #     appointment_to_update.image_url = form.data['imageUrl'],
-    #     appointment_to_update.street_address = form.data['streetAddress'],
-    #     appointment_to_update.city = form.data['city'],
-    #     appointment_to_update.zip_code = form.data['zipCode'],
-    #     appointment_to_update.fish_type_id = form.data['fishTypeId'],
-    #     appointment_to_update.appointment_type_id = form.data['appointmentTypeId']
-    #     db.session.add(appointment_to_update)
-    #     db.session.commit()
-    #     print('HELLO WORLD', appointment_to_update)
-    #     return appointment_to_update.to_dict()
+        appointment_to_update = Appointment.query.get(id)
+        appointment_to_update.user_id = form.data['userId'],
+        appointment_to_update.description = form.data['description'],
+        appointment_to_update.date = form.data['date'],
+        appointment_to_update.time = form.data['time'],
+        appointment_to_update.image_url = form.data['imageUrl'],
+        appointment_to_update.street_address = form.data['streetAddress'],
+        appointment_to_update.city = form.data['city'],
+        appointment_to_update.zip_code = form.data['zipCode'],
+        appointment_to_update.fish_type_id = form.data['fishTypeId'],
+        appointment_to_update.appointment_type_id = form.data['appointmentTypeId']
+        db.session.add(appointment_to_update)
+        db.session.commit()
+        print('HELLO WORLD', appointment_to_update)
+        return appointment_to_update.to_dict()
     return 'hello world'
 
 # @appointment_routes.route('/<int:id>', methods=['DELETE'])
