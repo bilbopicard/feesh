@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import NewAppointmentForm from './NewAppointmentForm';
 import { displayFishTypes } from '../store/fishtypes';
 import { displayAppointments } from '../store/appointments';
@@ -10,7 +10,7 @@ function EditAppointment() {
 
     let { id } = useParams()
     const dispatch = useDispatch();
-
+    const history = useHistory();
     const appointmentToEdit = useSelector(state => state.appointments[parseInt(id)])
     console.log(appointmentToEdit)
 
@@ -87,6 +87,7 @@ function EditAppointment() {
 
         // console.log(description, dateTime, streetAddress, city, fishTypeId, zipCode, appointmentTypeId, userId)
         dispatch(updateAppointment(payload))
+        history.push(`/appointments/${appointmentToEdit.id}`)
     }
 
     useEffect(() => {
