@@ -74,8 +74,13 @@ def edit_appointment(id):
         return appointment_to_update.to_dict()
     return 'hello world'
 
-# @appointment_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
-# def get_appointment(id):
-#     appointment = Appointment.query.get(id)
-#     return appointment.to_dict()
+
+@appointment_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_appointment(id):
+    appointment = Appointment.query.get(id)
+    db.session.delete(appointment)
+    db.session.commit()
+    appointments = Appointment.query.join(
+        AppointmentType, AppointmentType.id == Appointment.appointment_type_id).join(FishType, FishType.id == Appointment.fish_type_id).all()
+    return {"appointments": [appointment.to_dict() for appointment in appointments]}
