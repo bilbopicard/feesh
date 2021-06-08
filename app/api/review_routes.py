@@ -23,7 +23,8 @@ def add_review():
             user_id=form.data['user_id'],
             feeder_id=form.data['feeder_id'],
             rating=form.data['rating'],
-            content=form.data['content']
+            content=form.data['content'],
+            appointment_id=form.data['appointment_id']
         )
         db.session.add(new_review)
         db.session.commit()

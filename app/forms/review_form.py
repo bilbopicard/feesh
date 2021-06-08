@@ -8,6 +8,8 @@ from app.models import Appointment
 class ReviewForm(FlaskForm):
     user_id = IntegerField('User Id', validators=[DataRequired()])
     feeder_id = IntegerField('Feeder Id', validators=[DataRequired()])
+    appointment_id = IntegerField(
+        'Appointment Id', validators=[DataRequired()])
     rating = IntegerField('Rating', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Submit')

@@ -10,7 +10,8 @@ def seed_reviews():
     review1 = Review(user_id=2,
                      feeder_id=1,
                      rating=4,
-                     content='The best feeding my fish have ever gotten'
+                     content='The best feeding my fish have ever gotten',
+                     appointment_id=1
                      )
 
     db.session.add(review1)
