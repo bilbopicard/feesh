@@ -32,10 +32,26 @@
 }
 
 #single-appointment-bottom {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     width: 50%;
     margin: 0 auto;
+}
+
+#single-appointment-bottom button {
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+    margin: 10px auto 10px;
+    padding: 8px 20px;
+    background-color: rgba(0,194,203, 0.8);
+}
+
+#single-appointment-bottom button:hover {
+    background-color: rgba(0,194,203, 0.9);
+    cursor: pointer;
 }
 
 #two-btns-form {

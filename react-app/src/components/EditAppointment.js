@@ -5,6 +5,7 @@ import NewAppointmentForm from './NewAppointmentForm';
 import { displayFishTypes } from '../store/fishtypes';
 import { displayAppointments } from '../store/appointments';
 import { updateAppointment } from '../store/appointments';
+import './styles/editAppointment.css'
 
 function EditAppointment() {
 
@@ -98,68 +99,71 @@ function EditAppointment() {
     return (
         <>
             <div class='nav-empty-div'></div>
-            <form id='new-appointment-form' onSubmit={submitForm}>
+            <div id='edit-appointment-container'>
+                <h2>Editing Appointment</h2>
+                <form id='new-appointment-form' onSubmit={submitForm}>
 
-                <div>
-                    <label>Description</label>
-                    <input id="description" name='description' value={description} onChange={e => setDescription(e.target.value)} required />
-                </div>
+                    <div>
+                        <label>Description</label>
+                        <input id="description" name='description' value={description} onChange={e => setDescription(e.target.value)} required />
+                    </div>
 
-                <div>
-                    <label>Apointment Type</label>
-                    <select name="appointType" value={appointmentTypeId} onChange={e => setAppointmentTypeId(e.target.value)}>
-                        {appointmentTypes.map(type => (
-                            <option value={type[1]}>{type[0]}</option>
-                        ))}
-                    </select>
-                </div>
+                    <div>
+                        <label>Apointment Type</label>
+                        <select name="appointType" value={appointmentTypeId} onChange={e => setAppointmentTypeId(e.target.value)}>
+                            {appointmentTypes.map(type => (
+                                <option value={type[1]}>{type[0]}</option>
+                            ))}
+                        </select>
+                    </div>
 
-                <div>
+                    <div>
 
-                    <label>Date</label>
-                    <input type="date" name='date' value={date} onChange={e => setDate(e.target.value)} required />
-                </div>
+                        <label>Date</label>
+                        <input type="date" name='date' value={date} onChange={e => setDate(e.target.value)} required />
+                    </div>
 
-                <div>
+                    <div>
 
-                    <label>Time</label>
-                    <input type="time" name='time' value={time} onChange={e => setTime(e.target.value)} required />
-                </div>
+                        <label>Time</label>
+                        <input type="time" name='time' value={time} onChange={e => setTime(e.target.value)} required />
+                    </div>
 
-                <div>
-                    <label>Image</label>
-                    <input type="text" name='image' value={imageUrl} onChange={e => setImageUrl(e.target.value)} required />
-                </div>
+                    <div>
+                        <label>Image</label>
+                        <input type="text" name='image' value={imageUrl} onChange={e => setImageUrl(e.target.value)} required />
+                    </div>
 
-                <div>
-                    <label>Address</label>
-                    <input type="text" name='streetAddress' value={streetAddress} onChange={e => setStreetAddress(e.target.value)} required />
-                </div>
-
-
-                <div>
-                    <label>City</label>
-                    <input type="text" name='city' value={city} onChange={e => setCity(e.target.value)} />
-                </div>
+                    <div>
+                        <label>Address</label>
+                        <input type="text" name='streetAddress' value={streetAddress} onChange={e => setStreetAddress(e.target.value)} required />
+                    </div>
 
 
-                <div>
-                    <label>Zip Code</label>
-                    <input type="text" pattern="[0-9]{5}" name='zipCode' value={zipCode} onChange={e => setZipCode(e.target.value)} required />
-                </div>
+                    <div>
+                        <label>City</label>
+                        <input type="text" name='city' value={city} onChange={e => setCity(e.target.value)} />
+                    </div>
 
-                <div>
-                    <label>Fish Type</label>
-                    <select name="fish_type" id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
-                        <option>-- Select a type --</option>
-                        {fishTypes.map(type => (
-                            <option value={type.id} key={type.id}>{type.fish_type}</option>
-                        ))}
-                    </select>
-                </div>
-                <button id="new-appointment-btn" type="submit">Update Appointment</button>
 
-            </form>
+                    <div>
+                        <label>Zip Code</label>
+                        <input type="text" pattern="[0-9]{5}" name='zipCode' value={zipCode} onChange={e => setZipCode(e.target.value)} required />
+                    </div>
+
+                    <div>
+                        <label>Fish Type</label>
+                        <select name="fish_type" id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
+                            <option>-- Select a type --</option>
+                            {fishTypes.map(type => (
+                                <option value={type.id} key={type.id}>{type.fish_type}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <button id="new-appointment-btn" type="submit">Update Appointment</button>
+
+                </form>
+            </div>
         </>
     )
 }

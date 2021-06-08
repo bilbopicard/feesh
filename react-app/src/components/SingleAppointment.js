@@ -24,7 +24,6 @@ function SingleAppointment() {
     })
     console.log(reviewed)
 
-
     const editAppointment = (e) => {
         e.preventDefault()
         console.log(e.target.id)
