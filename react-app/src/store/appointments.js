@@ -68,6 +68,21 @@ export const updateAppointment = (payload) => async (dispatch) => {
     }
 }
 
+export const deleteAppointment = (payload) => async (dispatch) => {
+    const { appointmentId } = payload;
+    console.log(appointmentId)
+    const response = await fetch(`/api/appointments/${appointmentId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        console.log('WOO, ok')
+    }
+}
+
 const initialState = {
     list: [],
 };
