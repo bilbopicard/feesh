@@ -9,12 +9,16 @@ class Review(db.Model):
     feeder_id = db.Column(
         db.Integer, db.ForeignKey('users.id'), nullable=False)
     rating = db.Column(db.Integer)
+    appointment_id = db.Column(db.Integer, db.ForeignKey(
+        'appointments.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
 
     def to_dict(self):
         return {
+            "id": self.id,
             "user_id": self.user_id,
             "feeder_id": self.feeder_id,
             "rating": self.rating,
-            "content": self.content
+            "content": self.content,
+            "appointment_id": self.appointment_id
         }
