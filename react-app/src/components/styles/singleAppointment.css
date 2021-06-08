@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+
+#single-appointment-container {
+    box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#single-appointment-h1 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+#single-appointment-left {
+    width: 50%;
+    padding: 20px;
+}
+#single-appointment-right {
+    width: 50%;
+    padding: 20px;
+}
+
+#single-appointment-container img{
+    width: 50%;
+}
+
+#single-appointment-bottom {
+    border: 2px solid blue;
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#two-btns-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+

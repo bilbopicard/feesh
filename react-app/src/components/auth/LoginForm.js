@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+import DemoUser from '../auth/DemoUser';
 import fishLogo from '../../images/feesh-logo.svg'
 import fishLogo2 from '../../images/feesh-logo-2.svg'
 import '../styles/loginform.css';
@@ -74,9 +75,10 @@ const LoginForm = () => {
                 value={password}
                 onChange={updatePassword}
               />
-              <button type="submit">Login</button>
             </div>
+            <button id='login-submit' type="submit">Login</button>
           </form>
+          <DemoUser />
         </div>
       </div>
     </>

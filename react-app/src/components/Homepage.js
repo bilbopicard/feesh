@@ -65,7 +65,7 @@ function Homepage() {
                         <HomeBlurb active={active} />
                     </div>
                 </div>
-                <h3 id='homepage-h3'> - We feed fish</h3>
+                {/* <h3 id='homepage-h3'> - We feed fish</h3> */}
                 {/* <p>
                 What is Feesh? Why is Feesh? These are valid questions.
             </p> */}

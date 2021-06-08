@@ -9,15 +9,16 @@ body{
 }
 
 #appointment-type-container {
-    border: 2px solid black;
+    box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
     width: 60%;
     height: 50vh;
     margin: auto;
     display: flex;
     justify-content: space-around;
+    background-color: white;
     flex-wrap: wrap;
     border-radius: 10px;
-    
+    font-family: 'Poppins', sans-serif;
 }
 
 .home-inner-type-div {
@@ -33,6 +34,7 @@ body{
     height: 50%;
     text-align: center;
     border-radius: 10px;
+    color: rgba(0,0,0,0.6)
 }
 
 .home-inner-type-div img{
@@ -41,11 +43,16 @@ body{
 
 .home-inner-type-div:hover {
     cursor: pointer;
-    background-color: rgba(173, 216, 230, 0.5);
+    background-color: rgba(140,82,255, 0.1);
 }
 
 #homepage-h1 {
     text-align: center;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 3.6rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: rgb(0,194,203);
 }
 
 #homepage-h3 {
@@ -54,7 +61,7 @@ body{
 
 #homepage-lower-div {
     /* border: 2px solid blue; */
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(0,0,0,0.2);
     width: 100%;
     height: 25vh;
     /* padding: 20px; */
@@ -69,18 +76,22 @@ body{
     box-sizing: border-box;
     width: 90%;
     text-align: center;
+    font-size: 1.2rem;
     margin: 0 auto 20px;
+    color: rgba(0,0,0,0.4)
 }
 
 #homepage-lower-div a{
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
+    border-radius: 40px;
     text-decoration: none;
-    color: inherit;
+    color: white;
+    font-size: 1.6rem;
     margin: 0 auto;
     padding: 8px 20px;
-    background-color: grey;
+    background-color: rgba(0,194,203, 0.8);
 }
 
 #homepage-lower-div a:hover{
-    background-color: lightgrey;
+    background-color: rgba(0,194,203, 0.9);
 }

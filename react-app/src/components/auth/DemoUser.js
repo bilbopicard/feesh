@@ -21,7 +21,7 @@ export default function DemoUser() {
     }
 
     return (
-        <form onSubmit={onLogin}>
+        <form id='demo-form-btn' onSubmit={onLogin}>
             <button id="auth-nav-btn" type="submit" className='nav-btn'>DemoUser</button>
         </form>
     );
