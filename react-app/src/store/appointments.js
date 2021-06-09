@@ -50,8 +50,8 @@ export const createAppointment = (payload) => async (dispatch) => {
 }
 
 export const updateAppointment = (payload) => async (dispatch) => {
-    const { appointmentId, time } = payload;
-
+    const { appointmentId, date } = payload;
+    console.log(date)
     console.log(payload)
     const response = await fetch(`/api/appointments/${appointmentId}`, {
         method: "PUT",
@@ -63,7 +63,7 @@ export const updateAppointment = (payload) => async (dispatch) => {
     if (response.ok) {
         // console.log('yay')
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         dispatch(editAppointment(data))
     }
 }

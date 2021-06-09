@@ -18,4 +18,5 @@ class AppointmentForm(FlaskForm):
         'Street Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     zipCode = StringField('Zip Code', validators=[DataRequired()])
+    feeder_id = IntegerField('Feeder Id')
     submit = SubmitField('Submit')

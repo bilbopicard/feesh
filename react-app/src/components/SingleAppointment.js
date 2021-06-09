@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { displayAppointments, deleteAppointment } from "../store/appointments";
 import { allReviews } from '../store/reviews';
 import { createReview } from '../store/reviews';
+import { updateAppointment } from '../store/appointments';
 import './styles/singleAppointment.css';
 
 function SingleAppointment() {
@@ -17,12 +18,14 @@ function SingleAppointment() {
     const history = useHistory();
 
     const thisAppointment = useSelector(state => state.appointments[appointmentId])
+    const isUserFeeder = useSelector(state => state.session.user.feeder)
     const userId = useSelector(state => state.session.user.id)
+
 
     const reviewed = useSelector(state => {
         return state.reviews.list.map(reviewId => state.reviews[reviewId]).filter(review => review.appointment_id === thisAppointment?.id)
     })
-    console.log(reviewed)
+    // console.log(reviewed)
 
     const editAppointment = (e) => {
         e.preventDefault()
@@ -39,6 +42,23 @@ function SingleAppointment() {
         dispatch(deleteAppointment(payload))
         history.push('/appointments')
     }
+    // const timeFormat = new Date('1970-01-01T' + thisAppointment?.time)
+
+    // console.log(timeFormat.getTime())
+
+    // let date = new Date(timeFormat.getTime() * 1000);
+
+    // console.log(date)
+
+    // let hours = date.getHours();
+    // // Minutes part from the timestamp
+    // let minutes = "0" + date.getMinutes();
+    // // Seconds part from the timestamp
+    // let seconds = "0" + date.getSeconds();
+
+    // let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+    // console.log(formattedTime)
 
     const niceDateFormat = (aptDate) => {
         let d = new Date(aptDate),
@@ -73,6 +93,25 @@ function SingleAppointment() {
         }
         dispatch(createReview(payload))
         history.push('/appointments')
+    }
+    // console.log(thisAppointment?.date)
+    const respondToAppointment = (e) => {
+        e.preventDefault()
+        const payload = {
+            description: thisAppointment?.description,
+            date: new Date(thisAppointment?.date).toISOString().split('T')[0],
+            time: thisAppointment?.time.slice(0, 5),
+            streetAddress: thisAppointment?.street_address,
+            city: thisAppointment?.city,
+            fishTypeId: thisAppointment?.fish_type_id,
+            zipCode: thisAppointment?.zip_code,
+            userId: thisAppointment?.user_id,
+            appointmentTypeId: thisAppointment?.appointment_type_id,
+            imageUrl: thisAppointment?.image_url,
+            appointmentId: thisAppointment?.id,
+            feeder_id: userId
+        }
+        dispatch(updateAppointment(payload))
     }
 
     useEffect(() => {
@@ -114,6 +153,10 @@ function SingleAppointment() {
                     <textarea name="content" id="" cols="30" rows="10" value={content} onChange={e => setContent(e.target.value)} placeholder='Leave feedback...'></textarea>
                     {!reviewed.length ? <button id={thisAppointment.id} type='submit'> {`Leave review for ${thisAppointment.feeder}`}</button> : <button disabled='true'>Already reviewed</button>}
                 </form>}
+                {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === null && isUserFeeder ? <button onClick={respondToAppointment}>{`I can respond to this ${thisAppointment.appointment_type}`}</button> : ''
+                }
+                {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === userId && !thisAppointment?.completed ? <button onClick={respondToAppointment}>{`I\'ve Completed This`}</button> : ''
+                }
             </div>
 
         </>
