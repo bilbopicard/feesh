@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { displayFishTypes } from '../store/fishtypes';
 import { createAppointment } from '../store/appointments';
 
@@ -7,6 +8,7 @@ function NewAppointmentForm({ type }) {
 
     // console.log(type)
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const userId = useSelector(state => state.session.user.id)
 
@@ -60,11 +62,11 @@ function NewAppointmentForm({ type }) {
 
         // console.log(description, dateTime, streetAddress, city, fishTypeId, zipCode, appointmentTypeId, userId)
         dispatch(createAppointment(payload))
+        history.push('/appointments')
     }
 
     return (
         <form onSubmit={submitForm} id='new-appointment-form'>
-
             <div>
                 <label>Description</label>
                 <input id="description" name='description' value={description} onChange={e => setDescription(e.target.value)} required />
@@ -81,7 +83,16 @@ function NewAppointmentForm({ type }) {
                 <label>Time</label>
                 <input type="time" name='time' value={time} onChange={e => setTime(e.target.value)} required />
             </div>
-
+            <div>
+                <label>Fish Type</label>
+                <br />
+                <select name="fish_type" id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
+                    <option>-- Select a fish type --</option>
+                    {fishTypes.map(type => (
+                        <option value={type.id} key={type.id}>{type.fish_type}</option>
+                    ))}
+                </select>
+            </div>
             <div>
                 <label>Image</label>
                 <input type="text" name='image' value={imageUrl} onChange={e => setImageUrl(e.target.value)} required />
@@ -104,15 +115,7 @@ function NewAppointmentForm({ type }) {
                 <input type="text" pattern="[0-9]{5}" name='zipCode' value={zipCode} onChange={e => setZipCode(e.target.value)} required />
             </div>
 
-            <div>
-                <label>Fish Type</label>
-                <select name="fish_type" id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
-                    <option>-- Select a type --</option>
-                    {fishTypes.map(type => (
-                        <option value={type.id} key={type.id}>{type.fish_type}</option>
-                    ))}
-                </select>
-            </div>
+
             <button id="new-appointment-btn" type="submit">Create Appointment</button>
 
         </form>
