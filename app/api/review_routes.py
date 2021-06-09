@@ -28,7 +28,8 @@ def add_review():
         )
         db.session.add(new_review)
         db.session.commit()
-        return new_review.to_dict()
+        reviews = Review.query.all()
+        return {"reviews": [review.to_dict() for review in reviews]}
     return 'hello world'
 
 
@@ -45,11 +46,14 @@ def add_review():
 #     review = Review.query.get(id)
 #     return review.to_dict()
 
-# @review_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
-# def review(id):
-#     review = Review.query.get(id)
-#     return review.to_dict()
+@review_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_review(id):
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.session.commit()
+    reviews = Review.query.all()
+    return {"reviews": [review.to_dict() for review in reviews]}
 
 # @ review_routes.route('/users/<int:user_id>')
 # @ login_required
