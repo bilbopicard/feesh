@@ -160,10 +160,12 @@ function SingleAppointment() {
                 </div>
             </div>
             <div id='single-appointment-bottom'>
+
                 {thisAppointment?.user_id === userId && !thisAppointment?.completed && <form id='two-btns-form'>
                     <button id={thisAppointment.id} onClick={editAppointment}>Edit this appointment</button>
                     <button id={thisAppointment.id} onClick={cancelAppointment}> {`Cancel ${thisAppointment.appointment_type}`}</button>
                 </form>}
+
                 {!reviewed.length && thisAppointment?.user_id === userId && thisAppointment?.completed && <form onSubmit={submitReview}>
                     <label htmlFor="">Rating</label>
                     <input type="number" min='1' max='5' value={rating} onChange={e => setRating(e.target.value)} />
@@ -171,6 +173,7 @@ function SingleAppointment() {
                     <textarea name="content" id="" cols="30" rows="10" value={content} onChange={e => setContent(e.target.value)} placeholder='Leave feedback...'></textarea>
                     <button id={thisAppointment.id} type='submit'> {`Leave review for ${thisAppointment.feeder}`}</button>
                 </form>}
+
                 {reviewed.length && thisAppointment?.completed && thisAppointment.user_id === userId ? <div>
                     <p>{reviewed[0]?.content}</p>
                     <button id={reviewed[0]?.id} onClick={editThisReview}>Edit Review</button>
@@ -181,6 +184,7 @@ function SingleAppointment() {
                 }
                 {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === userId && !thisAppointment?.completed ? <button onClick={completedAppointment}>{`I\'ve Completed This`}</button> : ''
                 }
+
             </div>
 
         </>
