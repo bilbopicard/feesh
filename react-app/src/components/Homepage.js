@@ -33,7 +33,7 @@ function Homepage() {
 
     return (
         <>
-            <div class='nav-empty-div'></div>
+            <div className='nav-empty-div'></div>
             <div id='homepage-outer-container'>
                 <h1 id='homepage-h1'>Feesh</h1>
                 <div id='appointment-type-container'>

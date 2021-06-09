@@ -19,11 +19,11 @@ function FindAppointments() {
     // console.log(otherUserAppointments)
     return (
         <>
-            <div class='nav-empty-div'></div>
+            <div className='nav-empty-div'></div>
             <div id='find-appointment-container'>
                 <div id='find-appointment-left-div'>
                     {otherUserAppointments.map(appointment => (
-                        <NavLink to={`/appointments/${appointment.id}`}>
+                        <NavLink to={`/appointments/${appointment.id}`} key={appointment.id}>
                             <div className={`find-appointment-inner-div ${appointment.completed} ? 'completed' : ''}`} key={appointment.id}>
                                 <div className='find-appointment-inner-text'>
                                     <p>Type of appointment: {appointment.appointment_type}</p>

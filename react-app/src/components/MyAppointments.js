@@ -49,7 +49,7 @@ function MyAppointments() {
 
     return (
         <>
-            <div class='nav-empty-div'></div>
+            <div className='nav-empty-div'></div>
             <div id='my-appointment-outer-div'>
                 <h2>{user}'s Profile</h2>
                 <h1 id='my-appointments-h1'>My Appointments</h1>
@@ -57,8 +57,8 @@ function MyAppointments() {
                     <div id='not-completed'>
                         <h2>Upcoming Appointments</h2>
                         {myUpcomingAppointments.map(appointment => (
-                            <NavLink className='my-appointments-link' to={`/appointments/${appointment.id}`}>
-                                <div className='my-appointment-inner-div' key={appointment.id}>
+                            <NavLink key={appointment.id} className='my-appointments-link' to={`/appointments/${appointment.id}`}>
+                                <div className='my-appointment-inner-div'>
                                     <p>Date: {niceDateFormat(appointment.date)}</p>
                                     <p>Time: {appointment.time}</p>
                                     <p>Type: {appointment.appointment_type}</p>
@@ -70,7 +70,7 @@ function MyAppointments() {
                     <div id='completed'>
                         <h2>Completed Appointments</h2>
                         {myCompletedAppointments.map(appointment => (
-                            <NavLink className='my-appointments-link' to={`/appointments/${appointment.id}`}>
+                            <NavLink key={appointment.id} className='my-appointments-link' to={`/appointments/${appointment.id}`}>
                                 <div className='my-appointment-inner-div' key={appointment.id}>
                                     <p>Date: {niceDateFormat(appointment.date)}</p>
                                     <p>Time: {appointment.time}</p>

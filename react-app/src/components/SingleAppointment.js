@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { displayAppointments, deleteAppointment } from "../store/appointments";
 import { allReviews } from '../store/reviews';
-import { createReview } from '../store/reviews';
+import { createReview, deleteReview } from '../store/reviews';
 import { updateAppointment } from '../store/appointments';
 import './styles/singleAppointment.css';
 
@@ -11,6 +11,7 @@ function SingleAppointment() {
 
     const [rating, setRating] = useState(3)
     const [content, setContent] = useState('')
+    const [edit, setEdit] = useState(false)
 
     const { appointmentId } = useParams();
 
@@ -42,23 +43,6 @@ function SingleAppointment() {
         dispatch(deleteAppointment(payload))
         history.push('/appointments')
     }
-    // const timeFormat = new Date('1970-01-01T' + thisAppointment?.time)
-
-    // console.log(timeFormat.getTime())
-
-    // let date = new Date(timeFormat.getTime() * 1000);
-
-    // console.log(date)
-
-    // let hours = date.getHours();
-    // // Minutes part from the timestamp
-    // let minutes = "0" + date.getMinutes();
-    // // Seconds part from the timestamp
-    // let seconds = "0" + date.getSeconds();
-
-    // let formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-    // console.log(formattedTime)
 
     const niceDateFormat = (aptDate) => {
         let d = new Date(aptDate),
@@ -92,7 +76,7 @@ function SingleAppointment() {
             content
         }
         dispatch(createReview(payload))
-        history.push('/appointments')
+        // history.push('/appointments')
     }
     // console.log(thisAppointment?.date)
     const respondToAppointment = (e) => {
@@ -114,6 +98,40 @@ function SingleAppointment() {
         dispatch(updateAppointment(payload))
     }
 
+    const completedAppointment = (e) => {
+        e.preventDefault()
+        const payload = {
+            description: thisAppointment?.description,
+            date: new Date(thisAppointment?.date).toISOString().split('T')[0],
+            time: thisAppointment?.time.slice(0, 5),
+            streetAddress: thisAppointment?.street_address,
+            city: thisAppointment?.city,
+            fishTypeId: thisAppointment?.fish_type_id,
+            zipCode: thisAppointment?.zip_code,
+            userId: thisAppointment?.user_id,
+            appointmentTypeId: thisAppointment?.appointment_type_id,
+            imageUrl: thisAppointment?.image_url,
+            appointmentId: thisAppointment?.id,
+            feeder_id: userId,
+            completed: true
+        }
+        dispatch(updateAppointment(payload))
+    }
+
+    const toggle = () => setEdit(!edit)
+
+    const editThisReview = (e) => {
+        e.preventDefault()
+        console.log(edit)
+        toggle()
+        console.log(edit)
+    }
+
+    const deleteThisReview = (e) => {
+        e.preventDefault()
+        dispatch(deleteReview({ reviewId: e.target.id }))
+    }
+
     useEffect(() => {
         dispatch(displayAppointments())
     }, [dispatch])
@@ -130,12 +148,12 @@ function SingleAppointment() {
                 <div id='single-appointment-left'>
                     <p>Type: {thisAppointment?.appointment_type}</p>
                     <p>Date: {niceDateFormat(thisAppointment?.date)}</p>
-                    <p>Time: {thisAppointment?.time}</p>
+                    <p>Time: {thisAppointment?.time.slice(0, 5)}</p>
                     <p>Description: {thisAppointment?.description}</p>
                     <p>Address: {thisAppointment?.street_address}</p>
                     <p>City: {thisAppointment?.city}</p>
                     <p>Zip Code: {thisAppointment?.zip_code}</p>
-                    {thisAppointment?.feeder ? <p>Feeder: {thisAppointment?.feeder}</p> : ''}
+                    {thisAppointment?.feeder ? <p>Feeder: {thisAppointment?.feeder}</p> : <p>Feeder: None</p>}
                 </div>
                 <div id='single-appointment-right'>
                     <img src={thisAppointment?.image_url} />
@@ -146,16 +164,22 @@ function SingleAppointment() {
                     <button id={thisAppointment.id} onClick={editAppointment}>Edit this appointment</button>
                     <button id={thisAppointment.id} onClick={cancelAppointment}> {`Cancel ${thisAppointment.appointment_type}`}</button>
                 </form>}
-                {thisAppointment?.user_id === userId && thisAppointment?.completed && <form onSubmit={submitReview}>
+                {!reviewed.length && thisAppointment?.user_id === userId && thisAppointment?.completed && <form onSubmit={submitReview}>
                     <label htmlFor="">Rating</label>
                     <input type="number" min='1' max='5' value={rating} onChange={e => setRating(e.target.value)} />
                     <label>Feedback</label>
                     <textarea name="content" id="" cols="30" rows="10" value={content} onChange={e => setContent(e.target.value)} placeholder='Leave feedback...'></textarea>
-                    {!reviewed.length ? <button id={thisAppointment.id} type='submit'> {`Leave review for ${thisAppointment.feeder}`}</button> : <button disabled='true'>Already reviewed</button>}
+                    <button id={thisAppointment.id} type='submit'> {`Leave review for ${thisAppointment.feeder}`}</button>
                 </form>}
+                {reviewed.length && thisAppointment?.completed && thisAppointment.user_id === userId ? <div>
+                    <p>{reviewed[0]?.content}</p>
+                    <button id={reviewed[0]?.id} onClick={editThisReview}>Edit Review</button>
+                    <button id={reviewed[0]?.id} onClick={deleteThisReview}>Delete Review</button>
+                </div> : ''}
+
                 {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === null && isUserFeeder ? <button onClick={respondToAppointment}>{`I can respond to this ${thisAppointment.appointment_type}`}</button> : ''
                 }
-                {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === userId && !thisAppointment?.completed ? <button onClick={respondToAppointment}>{`I\'ve Completed This`}</button> : ''
+                {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === userId && !thisAppointment?.completed ? <button onClick={completedAppointment}>{`I\'ve Completed This`}</button> : ''
                 }
             </div>
 

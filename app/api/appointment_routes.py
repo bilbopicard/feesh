@@ -32,7 +32,8 @@ def create_appointment():
             city=form.data['city'],
             zip_code=form.data['zipCode'],
             fish_type_id=form.data['fishTypeId'],
-            appointment_type_id=form.data['appointmentTypeId']
+            appointment_type_id=form.data['appointmentTypeId'],
+
         )
         print(new_appointment)
         db.session.add(new_appointment)
@@ -68,7 +69,8 @@ def edit_appointment(id):
         appointment_to_update.zip_code = form.data['zipCode'],
         appointment_to_update.fish_type_id = form.data['fishTypeId'],
         appointment_to_update.appointment_type_id = form.data['appointmentTypeId'],
-        appointment_to_update.feeder_id = form.data['feeder_id']
+        appointment_to_update.feeder_id = form.data['feeder_id'],
+        appointment_to_update.completed = form.data['completed']
         db.session.add(appointment_to_update)
         db.session.commit()
         print('HELLO WORLD', appointment_to_update)

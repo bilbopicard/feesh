@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField, SubmitField, IntegerField, StringField
+from wtforms import TextAreaField, SubmitField, IntegerField, StringField, BooleanField
 from wtforms.fields.html5 import DateField, TimeField
 from wtforms.validators import DataRequired
 from app.models import Appointment
@@ -19,4 +19,5 @@ class AppointmentForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     zipCode = StringField('Zip Code', validators=[DataRequired()])
     feeder_id = IntegerField('Feeder Id')
+    completed = BooleanField('Completed')
     submit = SubmitField('Submit')
