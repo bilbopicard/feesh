@@ -1,6 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
 #new-appointment-outer-div {
-    border: 2px solid red;
-    width: 300px;
-    margin: 150px auto;
+    border-radius: 5px;
+    padding: 20px;
+    width: 30%;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
+    font-family: 'Poppins', sans-serif;
 }
 
+#new-appointment-outer-div h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: rgba(0,0,0,0.8)
+}
+
+#new-appointment-outer-div label {
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.8)
+}
+
+#new-appointment-outer-div input {
+    width: 96%;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+    padding: 5px;
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 12px;
+}
+
+#new-appointment-outer-div select {
+    font-size: 1.2rem;
+    background-color: rgba(0,194,203, 0.8);
+    color: white;
+    margin-bottom: 12px;
+    padding: 5px;
+}
+
+#new-appointment-outer-div select option {
+    background-color: rgb(0,194,203);
+}
+
+#new-appointment-outer-div button {
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+    margin: 10px auto 10px;
+    padding: 8px 20px;
+    background-color: rgba(0,194,203, 0.8);
+    display: flex;
+}
+
+#new-appointment-outer-div button:hover {
+    background-color: rgba(0,194,203, 0.9);
+    cursor: pointer;
+}

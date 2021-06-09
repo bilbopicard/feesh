@@ -11,10 +11,13 @@ function NewAppointment() {
     type = type[0].toUpperCase() + type.slice(1)
 
     return (
-        <div id='new-appointment-outer-div'>
-            <h1>{type} Form</h1>
-            <NewAppointmentForm type={type} />
-        </div>
+        <>
+            <div className="nav-empty-div"></div>
+            <div id='new-appointment-outer-div'>
+                <h2>{type} Form</h2>
+                <NewAppointmentForm type={type} />
+            </div>
+        </>
     );
 }
 export default NewAppointment;
