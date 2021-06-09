@@ -46,7 +46,7 @@ function EditAppointment() {
     const [appointmentTypeId, setAppointmentTypeId] = useState(appointmentToEdit?.appointment_type_id)
     const appointmentId = appointmentToEdit?.id
 
-    console.log(typeof time)
+    // console.log(typeof time)
 
     const fishTypes = useSelector(state => {
         return state.fishTypes.list.map(typeId => state.fishTypes[typeId])

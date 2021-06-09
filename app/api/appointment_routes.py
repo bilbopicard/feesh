@@ -53,7 +53,7 @@ def get_appointment(id):
 def edit_appointment(id):
     form = AppointmentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data['time'])
+    print(form.data)
     if form.validate_on_submit():
         print('inside validation lol')
     #     return 'whats up'
@@ -67,7 +67,8 @@ def edit_appointment(id):
         appointment_to_update.city = form.data['city'],
         appointment_to_update.zip_code = form.data['zipCode'],
         appointment_to_update.fish_type_id = form.data['fishTypeId'],
-        appointment_to_update.appointment_type_id = form.data['appointmentTypeId']
+        appointment_to_update.appointment_type_id = form.data['appointmentTypeId'],
+        appointment_to_update.feeder_id = form.data['feeder_id']
         db.session.add(appointment_to_update)
         db.session.commit()
         print('HELLO WORLD', appointment_to_update)
