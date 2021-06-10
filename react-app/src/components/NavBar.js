@@ -9,15 +9,16 @@ import { useSelector } from 'react-redux';
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user)
-  console.log(user)
+  // console.log(user)
   return (
     <nav>
       <ul>
-        <li>
+        {user && <li>
           <NavLink to="/" exact={true}>
             <img src={feeshLogo} alt="" />
           </NavLink>
-        </li>
+        </li>}
+
         {!user && <li>
           <DemoUser />
         </li>}
@@ -40,11 +41,12 @@ const NavBar = () => {
           </NavLink>
         </li>}
 
-        {user && user?.feeder ? <li>
+        {user && user?.feeder && <li>
           <NavLink to='/find' className="nav-link">
             Go Feeshing
           </NavLink>
-        </li> : <li>
+        </li>}
+        {user && !user?.feeder && <li>
           <NavLink to='/getcertified' className="nav-link">
             Become Feesh Certified
           </NavLink>
