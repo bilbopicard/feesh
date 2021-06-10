@@ -1,42 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+
+#find-feeshing-h1 {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    /* text-decoration: underline; */
+}
+
 #find-appointment-container {
-    border: 2px solid red;
+    border: 2px solid rgba(0,194,203, 0.5);
     display: flex;
-    width: 90%;
-    height: 500px;
+    width: 90vw;
+    height: 70vh;
     margin: 0 auto;
+    background-color: white;
+    /* padding: 10px; */
 }
-
-#find-appointment-left-div {
-    width: 50%;
-    box-sizing: border-box;
-}
-
 .find-appointment-inner-div {
-    border: 2px solid blue;
+    border-radius: 3px;
+    border: 2px solid rgba(140,82,255, 0.75);
+    background-color: rgba(211, 211, 211, 0.4);
     box-sizing: border-box;
     display: flex;
     width: 100%;
+}
 
-    /* height: 60px; */
+.find-appointment-inner-div:hover {
+    background-color: rgba(140,82,255, 0.2);
 }
 
 .find-appointment-inner-text {
     box-sizing: border-box;
     width: 70%;
-    border: 2px solid green;
+    /* border: 2px solid green; */
+    /* padding: 0px 10px; */
+}
+
+.find-appointment-inner-text p {
+    margin: 8px;
 }
 
 #find-appointment-image-div {
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
     width: 30%;
+    margin: 10px;
 }
 
 #find-appointment-image-div img{
     width: 100%;
+    border-radius: 2px;
 }
 
 #find-appointment-left-div {
-    width: 50%;
+    /* border: 2px solid rgba(0,194,203, 0.5); */
+    width: 60%;
     overflow-y: scroll;
+    font-family: 'Poppins', sans-serif;
+    /* background-color: white; */
+    padding: 20px;
 }
 
+#find-appointment-left-inner {
+    /* width: 90%; */
+    margin: 0px auto 20px;
+}
+
+#find-appointment-left-inner a{
+    text-decoration: none;
+    color: inherit;
+}
+#find-appointment-right-div {
+    box-sizing: border-box;
+    padding: 20px;
+    /* margin-left: 2vw; */
+    width: 40%;
+    overflow:hidden;
+    position: relative;
+    /* background-color: white; */
+}
