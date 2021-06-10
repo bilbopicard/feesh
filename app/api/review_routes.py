@@ -40,11 +40,21 @@ def add_review():
 #     return review.to_dict()
 
 
-# @review_routes.route('/<int:id>', methods=['PUT'])
-# @login_required
-# def review(id):
-#     review = Review.query.get(id)
-#     return review.to_dict()
+@review_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def review(id):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review.query.get(id)
+        review.content = form.data['content']
+        review.rating = form.data['rating']
+        # db.session.add(review)
+        db.session.commit()
+        reviews = Review.query.all()
+        return {"reviews": [review.to_dict() for review in reviews]}
+    return 'hello world'
+
 
 @review_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

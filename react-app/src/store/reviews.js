@@ -1,5 +1,6 @@
 // const ADD_REVIEW = 'reviews/ADD_REVIEW';
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
+const UPDATE_REVIEW = 'reviews/UPDATE_REVIEW';
 // const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
 // const addReview = (payload) => {
@@ -13,6 +14,13 @@ const getReviews = (list) => {
     return {
         type: GET_REVIEWS,
         list
+    }
+}
+
+const updateReview = (review) => {
+    return {
+        type: UPDATE_REVIEW,
+        review
     }
 }
 
@@ -39,6 +47,24 @@ export const createReview = (payload) => async (dispatch) => {
     if (response.ok) {
         // console.log('yay')
         const data = await response.json();
+        dispatch(getReviews(data))
+    }
+}
+
+export const editReview = (payload) => async (dispatch) => {
+    const { id } = payload;
+    console.log(payload)
+    const response = await fetch(`/api/reviews/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        console.log('woot')
+        const data = await response.json()
+        console.log('returned data weeeee', data)
         dispatch(getReviews(data))
     }
 }
@@ -82,7 +108,9 @@ export default function reviewReducer(state = initialState, action) {
                 ...nextState,
                 list: sortList(action.list.reviews)
             };
-
+        case UPDATE_REVIEW:
+            state[action.review.id] = action.review
+            return { ...state }
         default:
             return state;
     }
