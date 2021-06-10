@@ -78,6 +78,8 @@ function SingleAppointment() {
         dispatch(createReview(payload))
         // history.push('/appointments')
     }
+    // const newDate = new Date(thisAppointment?.date).toDateString()
+    // console.log(newDate)
     // console.log(thisAppointment?.date)
     const respondToAppointment = (e) => {
         e.preventDefault()
