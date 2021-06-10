@@ -1,13 +1,13 @@
-const ADD_REVIEW = 'reviews/ADD_REVIEW';
+// const ADD_REVIEW = 'reviews/ADD_REVIEW';
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
-const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
+// const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
-const addReview = (payload) => {
-    return {
-        type: ADD_REVIEW,
-        payload
-    }
-}
+// const addReview = (payload) => {
+//     return {
+//         type: ADD_REVIEW,
+//         payload
+//     }
+// }
 
 const getReviews = (list) => {
     return {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { displayAppointments } from "../store/appointments";
+import React from "react";
+import { NavLink } from "react-router-dom";
+// import { useSelector, useDispatch } from 'react-redux';
+// import { displayAppointments } from "../store/appointments";
 import './styles/homeblurb.css'
 
 function HomeBlurb({ active }) {

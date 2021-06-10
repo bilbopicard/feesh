@@ -4,12 +4,43 @@
     box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
     border-radius: 5px;
     padding: 20px;
-    width: 30%;
+    width: 40%;
     margin: 20px auto;
     background-color: white;
 }
 
+#edit-appointment-container h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: rgba(0,0,0,0.8)
+}
+
+#edit-appointment-container label {
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.8)
+}
+
+#edit-appointment-container input {
+    width: 96%;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+    padding: 5px;
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 12px;
+}
+
+#edit-appointment-container select {
+    font-size: 1.2rem;
+    background-color: rgba(0,194,203, 0.8);
+    color: white;
+    margin-bottom: 12px;
+    padding: 5px;
+}
+
 #edit-appointment-container button{
+    display: flex;
     border: none;
     border-radius: 40px;
     text-decoration: none;

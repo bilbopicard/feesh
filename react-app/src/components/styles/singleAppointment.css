@@ -7,10 +7,10 @@
     font-family: 'Poppins', sans-serif;
     display: flex;
     /* flex-wrap: wrap; */
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 #single-appointment-h1 {
@@ -23,12 +23,16 @@
     padding: 20px;
 }
 #single-appointment-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
     padding: 20px;
 }
 
 #single-appointment-container img{
-    width: 50%;
+    width: 80%;
+    border-radius: 3px;
 }
 
 #single-appointment-bottom {

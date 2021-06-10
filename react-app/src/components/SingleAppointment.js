@@ -48,20 +48,20 @@ function SingleAppointment() {
         let d = new Date(aptDate),
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
-            year = d.getFullYear(),
-            hh = d.getHours(),
-            m = d.getMinutes();
+            year = d.getFullYear();
+        //     hh = d.getHours(),
+        //     m = d.getMinutes();
 
-        let dd = "AM";
-        let h = hh;
-        if (h >= 12) {
-            h = hh - 12;
-            dd = "PM";
-        }
-        if (h === 0) {
-            h = 12;
-        }
-        m = m < 10 ? "0" + m : m;
+        // let dd = "AM";
+        // let h = hh;
+        // if (h >= 12) {
+        //     h = hh - 12;
+        //     dd = "PM";
+        // }
+        // if (h === 0) {
+        //     h = 12;
+        // }
+        // m = m < 10 ? "0" + m : m;
 
         return [[month, day, year].join('-')];
     }
@@ -78,9 +78,7 @@ function SingleAppointment() {
         dispatch(createReview(payload))
         // history.push('/appointments')
     }
-    // const newDate = new Date(thisAppointment?.date).toDateString()
-    // console.log(newDate)
-    // console.log(thisAppointment?.date)
+
     const respondToAppointment = (e) => {
         e.preventDefault()
         const payload = {
@@ -184,7 +182,7 @@ function SingleAppointment() {
 
                 {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === null && isUserFeeder ? <button onClick={respondToAppointment}>{`I can respond to this ${thisAppointment.appointment_type}`}</button> : ''
                 }
-                {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === userId && !thisAppointment?.completed ? <button onClick={completedAppointment}>{`I\'ve Completed This`}</button> : ''
+                {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === userId && !thisAppointment?.completed ? <button onClick={completedAppointment}>{`I've Completed This`}</button> : ''
                 }
 
             </div>

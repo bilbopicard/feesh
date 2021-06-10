@@ -13,9 +13,9 @@ const mapStyles = {
 
 function MapContainer(props) {
 
-    const userZip = useSelector(state => state.session.user.zip_code)
+    // const userZip = useSelector(state => state.session.user.zip_code)
     const [markers, setMarkers] = useState([]);
-    const [userLoc, setUserLoc] = useState([]);
+    // const [userLoc, setUserLoc] = useState([]);
     const history = useHistory();
 
     const userId = useSelector(state => state.session.user.id)

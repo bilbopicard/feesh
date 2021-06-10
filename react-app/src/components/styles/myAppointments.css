@@ -26,8 +26,16 @@
     background-color: white;
     border-left: 2px solid rgba(0,194,203, 0.5);
     border-right: 2px solid rgba(0,194,203, 0.5);
-    border-top: 2px solid rgba(0,194,203, 0.5);
+    border-top: 4px solid rgba(0,194,203, 0.5);
    z-index: 1;
+}
+
+.my-appointments-top-link:first-child {
+ border-left: 4px solid rgba(0,194,203, 0.5);    
+}
+
+.my-appointments-top-link:last-child {
+    border-right: 4px solid rgba(0,194,203, 0.5);  ;
 }
 
 .my-appointments-top-link:hover {
@@ -44,9 +52,9 @@
 #my-appointments-flex-container {
 
     box-sizing: border-box;
-    border-left: 2px solid rgba(0,194,203, 0.5);
-    border-right: 2px solid rgba(0,194,203, 0.5);
-    border-bottom: 2px solid rgba(0,194,203, 0.5);
+    border-left: 4px solid rgba(0,194,203, 0.5);
+    border-right: 4px solid rgba(0,194,203, 0.5);
+    border-bottom: 4px solid rgba(0,194,203, 0.5);
     padding-top: 50px;
     width: 100%;
     height: 70vh;
@@ -64,6 +72,7 @@
     width: 46%;
     overflow-y: scroll;
     /* border: 2px solid rgb(140,82,255); */
+    /* background-color: rgba(0,194,203, 0.1); */
 }
 
 #my-appointments-flex-container h2 {
@@ -74,7 +83,6 @@
     box-sizing: border-box;
     width: 46%;
     overflow-y: scroll;
-    /* background-color: rgba(0,0,0, 0.20); */
 }
 
 #upcoming-feeshing {
@@ -97,13 +105,16 @@
 }
 
 .my-appointment-inner-div {
-    border: 2px solid rgba(140,82,255, 0.75);
-    background-color: rgba(211, 211, 211, 0.4);
+    box-sizing: border-box;
+    width: 90%;
+    border: 3px solid rgba(140,82,255, 0.5);
+    /* box-shadow: 0 0 2px 2px rgba(0,194,203, 0.5); */
+    /* background-color: rgba(0,194,203, 0.2); */
     padding: 5px;
-    border-radius: 2px;
-    /* background-color: white; */
+    border-radius: 10px;
+    background-color: white;
     overflow-y: hidden;
-    margin-bottom: 10px;
+    margin: 14px auto;
 }
 
 .my-appointment-inner-div p {
@@ -113,7 +124,7 @@
 
 .my-appointment-inner-div:hover {
    height: auto;
-   background-color: rgba(140,82,255, 0.2);
+   background-color: rgba(140,82,255, 0.1);
 }
 
 #my-appointments-h1 {
@@ -125,5 +136,5 @@
 }
 
 .no-border {
-    border-bottom: 2px solid rgba(0,194,203, 0.5);
+    border-bottom: 4px solid rgba(0,194,203, 0.5);
 }

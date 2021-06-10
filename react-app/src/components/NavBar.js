@@ -4,7 +4,7 @@ import DemoUser from './auth/DemoUser';
 import LogoutButton from './auth/LogoutButton';
 import './styles/navbar.css';
 import feeshLogo from '../images/feesh-logo-2.svg';
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
 

@@ -16,20 +16,20 @@ function FindAppointments() {
         let d = new Date(aptDate),
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
-            year = d.getFullYear(),
-            hh = d.getHours(),
-            m = d.getMinutes();
+            year = d.getFullYear();
+        // hh = d.getHours();
+        // m = d.getMinutes();
 
-        let dd = "AM";
-        let h = hh;
-        if (h >= 12) {
-            h = hh - 12;
-            dd = "PM";
-        }
-        if (h === 0) {
-            h = 12;
-        }
-        m = m < 10 ? "0" + m : m;
+        // let dd = "AM";
+        // let h = hh;
+        // if (h >= 12) {
+        //     h = hh - 12;
+        //     dd = "PM";
+        // }
+        // if (h === 0) {
+        //     h = 12;
+        // }
+        // m = m < 10 ? "0" + m : m;
 
         return [[month, day, year].join('-')];
     }

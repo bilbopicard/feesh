@@ -86,7 +86,7 @@ function NewAppointmentForm({ type }) {
             <div>
                 <label>Fish Type</label>
                 <br />
-                <select name="fish_type" id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
+                <select id="fish-type" name='fishTypeId' value={fishTypeId} onChange={e => setFishTypeId(e.target.value)} required>
                     <option>-- Select a fish type --</option>
                     {fishTypes.map(type => (
                         <option value={type.id} key={type.id}>{type.fish_type}</option>

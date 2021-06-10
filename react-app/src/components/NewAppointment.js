@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useParams } from "react-router-dom";
+// import { useSelector } from 'react-redux';
 import NewAppointmentForm from './NewAppointmentForm';
 import './styles/newAppointment.css'
 

@@ -36,7 +36,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div class='nav-empty-div'></div>
+      <div className='nav-empty-div'></div>
       <div id='login-container'>
         <div id='login-upper-div'>
           <div className='login-inner-div'>
