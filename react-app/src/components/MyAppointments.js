@@ -55,7 +55,7 @@ function MyAppointments() {
     const changeVisible = (e) => {
         e.preventDefault()
         const clicked = e.target.id;
-        console.log(clicked)
+        // console.log(clicked)
         if (active === clicked) {
             setActive(active)
         } else {

@@ -10,7 +10,7 @@
 }
 
 #find-appointment-container {
-    border: 2px solid rgba(0,194,203, 0.5);
+    border: 4px solid rgba(0,194,203, 0.5);
     display: flex;
     width: 90vw;
     height: 70vh;
@@ -21,7 +21,7 @@
 .find-appointment-inner-div {
     border-radius: 3px;
     border: 2px solid rgba(140,82,255, 0.75);
-    background-color: rgba(211, 211, 211, 0.4);
+    /* background-color: rgba(211, 211, 211, 0.4); */
     box-sizing: border-box;
     display: flex;
     width: 100%;
@@ -40,6 +40,7 @@
 
 .find-appointment-inner-text p {
     margin: 8px;
+    font-size: 1.2rem;
 }
 
 #find-appointment-image-div {

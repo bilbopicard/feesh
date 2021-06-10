@@ -150,6 +150,7 @@ function SingleAppointment() {
                     <p>Date: {niceDateFormat(thisAppointment?.date)}</p>
                     <p>Time: {thisAppointment?.time.slice(0, 5)}</p>
                     <p>Description: {thisAppointment?.description}</p>
+                    <p>Fish Type: {thisAppointment?.fish_type}</p>
                     <p>Address: {thisAppointment?.street_address}</p>
                     <p>City: {thisAppointment?.city}</p>
                     <p>Zip Code: {thisAppointment?.zip_code}</p>

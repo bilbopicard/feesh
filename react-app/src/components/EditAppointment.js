@@ -14,30 +14,30 @@ function EditAppointment() {
     const history = useHistory();
 
     const appointmentToEdit = useSelector(state => state.appointments[parseInt(id)])
-    console.log(appointmentToEdit)
+    // console.log(appointmentToEdit)
 
     // const newDate = new Date(appointmentToEdit?.date)
 
-    // function formatDate(date) {
-    //     var d = new Date(date),
-    //         month = '' + (d.getMonth() + 1),
-    //         day = '' + d.getDate(),
-    //         year = d.getFullYear();
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
 
-    //     if (month.length < 2)
-    //         month = '0' + month;
-    //     if (day.length < 2)
-    //         day = '0' + day;
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
 
-    //     return [year, month, day].join('-');
-    // }
+        return [year, month, day].join('-');
+    }
 
     // const formattedNewDate = formatDate(newDate)
-    console.log(appointmentToEdit?.date.slice(0, 14))
+    // console.log(appointmentToEdit?.date.slice(0, 14))
 
     const userId = useSelector(state => state.session.user.id)
     const [description, setDescription] = useState(appointmentToEdit?.description)
-    const [date, setDate] = useState(appointmentToEdit?.date)
+    const [date, setDate] = useState(formatDate(appointmentToEdit?.date))
     const [streetAddress, setStreetAddress] = useState(appointmentToEdit?.street_address)
     const [city, setCity] = useState(appointmentToEdit?.city)
     const [fishTypeId, setFishTypeId] = useState(appointmentToEdit?.fish_type_id)
@@ -76,6 +76,20 @@ function EditAppointment() {
     }
 
     useEffect(() => {
+        if (appointmentToEdit) {
+            setDescription(appointmentToEdit?.description)
+            setDate(formatDate(appointmentToEdit?.date))
+            setStreetAddress(appointmentToEdit?.street_address)
+            setCity(appointmentToEdit?.city)
+            setFishTypeId(appointmentToEdit?.fish_type_id)
+            setZipCode(appointmentToEdit?.zip_code)
+            setImageUrl(appointmentToEdit?.image_url)
+            setTime(appointmentToEdit?.time.slice(0, 5))
+            setAppointmentTypeId(appointmentToEdit?.appointment_type_id)
+        }
+    }, [appointmentToEdit])
+
+    useEffect(() => {
         dispatch(displayAppointments())
         dispatch(displayFishTypes())
     }, [dispatch])
@@ -85,7 +99,7 @@ function EditAppointment() {
         <>
             <div className='nav-empty-div'></div>
             <div id='edit-appointment-container'>
-                <h2>Editing Appointment</h2>
+                <h2>{`Editing ${appointmentToEdit?.appointment_type} Appointment`}</h2>
                 <form id='new-appointment-form' onSubmit={submitForm}>
 
                     <div>
@@ -124,12 +138,10 @@ function EditAppointment() {
                         <input type="text" name='streetAddress' value={streetAddress} onChange={e => setStreetAddress(e.target.value)} required />
                     </div>
 
-
                     <div>
                         <label>City</label>
                         <input type="text" name='city' value={city} onChange={e => setCity(e.target.value)} />
                     </div>
-
 
                     <div>
                         <label>Zip Code</label>
