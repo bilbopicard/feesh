@@ -48,7 +48,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div class='nav-empty-div'></div>
+      <div className='nav-empty-div'></div>
       <div id='signup-upper-div'>
         <div id='signup-inner-div'>
           <img id='login-logo' src={fishLogo} alt="feesh logo" />

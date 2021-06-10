@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+// import { useParams, NavLink } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import { displayAppointments } from "../store/appointments";
 import './styles/homepage.css'
 import HomeBlurb from './HomeBlurb';
@@ -10,7 +10,7 @@ import dropInImage from '../images/drop-in-image.svg';
 import healthImage from '../images/health-image.svg';
 import sittingImage from '../images/sitting-image.svg';
 import boardingImage from '../images/boarding-image.svg';
-import Map from './Map';
+// import Map from './Map';
 
 function Homepage() {
 
