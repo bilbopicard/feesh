@@ -97,8 +97,8 @@
 }
 
 .my-appointment-inner-div {
-    /* border: 2px solid rgba(140,82,255, 0.75); */
-    background-color: rgba(140,82,255, 0.2);
+    border: 2px solid rgba(140,82,255, 0.75);
+    background-color: rgba(211, 211, 211, 0.4);
     padding: 5px;
     border-radius: 2px;
     /* background-color: white; */
@@ -113,7 +113,7 @@
 
 .my-appointment-inner-div:hover {
    height: auto;
-   background-color: rgba(140,82,255, 0.3);
+   background-color: rgba(140,82,255, 0.2);
 }
 
 #my-appointments-h1 {

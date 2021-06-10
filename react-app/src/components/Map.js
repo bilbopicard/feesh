@@ -6,7 +6,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_KEY);
 
 const mapStyles = {
-    width: '40%',
+    width: '90%',
     height: '500px'
 };
 
@@ -64,9 +64,8 @@ function MapContainer(props) {
         <Map
             google={props.google}
             style={mapStyles}
-            zoom={7}
+            zoom={8}
             initialCenter={{ lat: 36.9741, lng: -122.0308 }}
-            setCenter
         >
             {markers}
         </Map >
