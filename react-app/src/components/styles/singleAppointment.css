@@ -6,11 +6,12 @@
     box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
     font-family: 'Poppins', sans-serif;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     width: 60%;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     background-color: white;
     border-radius: 4px;
+    color: rgba(0,0,0, 0.8)
 }
 
 #single-appointment-h1 {
@@ -19,7 +20,7 @@
 }
 
 #single-appointment-left {
-    width: 50%;
+    width: 40%;
     padding: 20px;
 }
 #single-appointment-right {
@@ -39,7 +40,7 @@
     /* border: 2px solid blue; */
     display: flex;
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 100px;
 }
 
 #single-appointment-bottom button {
@@ -64,4 +65,103 @@
     justify-content: space-around;
 }
 
+#single-appointment-reviews {
+    width: 50%;
+    border: 2px solid rgba(0,0,0, 0.4);
+    background-color: rgba(0,194,203, 0.2);
+    margin: 10px auto 40px;
+    padding: 10px;
+}
+
+#single-appointment-reviews:empty {
+    display: none;
+}
+
+#single-appointment-reviews button {
+    /* max-width: 30%; */
+    border: none;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+    margin: 10px;
+    padding: 8px 20px;
+    background-color: rgba(0,194,203, 0.8);
+}
+
+#review-btns-edit-delete {
+    display: flex;
+    justify-content: center;
+}
+
+#single-appointment-reviews button:hover {
+    background-color: rgba(0,194,203, 0.9);
+    cursor: pointer;
+}
+
+#review-form-div form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#review-form-div label {
+    margin: auto;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.8)
+}
+
+#review-form-div input {
+    width: 10%;
+    margin: auto;
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+#review-form-div textarea{
+    /* border: 2px solid black; */
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 auto 20px;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+#review-form-div textarea:focus {
+    outline: none;
+    border: 1px solid rgb(140,82,255);
+}
+
+#review-form-div button {
+    width: 50%;
+    font-size: 1rem;
+    
+}
+
+#reviews-text-div button{
+    /* width: 30%; */
+    font-size: 1rem;
+}
+
+#reviews-text-div p {
+    border: 1px solid rgba(0,0,0, 0.4);
+    width: fit-content;
+    max-width: 80%;
+    overflow-wrap: break-word;
+    text-align: center;
+    margin: 20px auto 20px;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    padding: 10px;
+}
+
+#starfish-div {
+    text-align: center;
+}
+
+#reviews-text-div img {
+    width: 50px;
+}
 

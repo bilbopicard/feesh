@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { displayAppointments, deleteAppointment } from "../store/appointments";
 import { allReviews } from '../store/reviews';
-import { createReview, deleteReview } from '../store/reviews';
+import { createReview, deleteReview, editReview } from '../store/reviews';
 import { updateAppointment } from '../store/appointments';
 import './styles/singleAppointment.css';
+import starfish from '../images/starfish.svg'
 
 function SingleAppointment() {
 
-    const [rating, setRating] = useState(3)
-    const [content, setContent] = useState('')
+    const [rating, setRating] = useState()
+    const [content, setContent] = useState()
     const [edit, setEdit] = useState(false)
 
     const { appointmentId } = useParams();
@@ -23,7 +24,7 @@ function SingleAppointment() {
     const userId = useSelector(state => state.session.user.id)
 
 
-    const reviewed = useSelector(state => {
+    let reviewed = useSelector(state => {
         return state.reviews.list.map(reviewId => state.reviews[reviewId]).filter(review => review.appointment_id === thisAppointment?.id)
     })
     // console.log(reviewed)
@@ -118,19 +119,87 @@ function SingleAppointment() {
         dispatch(updateAppointment(payload))
     }
 
-    const toggle = () => setEdit(!edit)
+    // const toggle = () => setEdit(!edit)
 
     const editThisReview = (e) => {
         e.preventDefault()
-        console.log(edit)
-        toggle()
-        console.log(edit)
+        setEdit(!edit)
     }
+
+    const updateReview = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            appointment_id: reviewed[0]?.appointment_id,
+            feeder_id: reviewed[0]?.feeder_id,
+            user_id: userId,
+            rating: rating,
+            content: content,
+            id: reviewed[0]?.id
+        }
+        dispatch(editReview(payload))
+        dispatch(allReviews())
+        setEdit(!edit)
+    }
+
+    useEffect(() => {
+        setRating(reviewed[0]?.rating)
+        setContent(reviewed[0]?.content)
+    }, [edit])
 
     const deleteThisReview = (e) => {
         e.preventDefault()
         dispatch(deleteReview({ reviewId: e.target.id }))
+        setRating('')
+        setContent('')
     }
+
+    const renderRating = (rating) => {
+
+        if (rating === 5) {
+            return (
+                <div>
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                </div>
+            )
+        } else if (rating === 4) {
+            return (
+                <div>
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                </div>
+            )
+        } else if (rating === 3) {
+            return (
+                <div>
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                </div>
+            )
+        } else if (rating === 2) {
+            return (
+                <div>
+                    <img src={starfish} alt={`Small starfish`} />
+                    <img src={starfish} alt={`Small starfish`} />
+                </div>
+            )
+        } else if (rating === 1) {
+            return (
+                <div>
+                    <img src={starfish} alt={`Small starfish`} />
+                </div>
+            )
+        }
+    }
+
+    // console.log(reviewed.length)
 
     useEffect(() => {
         dispatch(displayAppointments())
@@ -154,32 +223,53 @@ function SingleAppointment() {
                     <p>Address: {thisAppointment?.street_address}</p>
                     <p>City: {thisAppointment?.city}</p>
                     <p>Zip Code: {thisAppointment?.zip_code}</p>
-                    {thisAppointment?.feeder ? <p>Feeder: {thisAppointment?.feeder}</p> : <p>Feeder: None</p>}
+                    {thisAppointment?.feeder ? <p>Feesher: {thisAppointment?.feeder}</p> : <p>Feesher: None</p>}
                 </div>
                 <div id='single-appointment-right'>
                     <img src={thisAppointment?.image_url} />
                 </div>
+                {thisAppointment?.completed ?
+                    <div id='single-appointment-reviews'>
+                        {reviewed.length === 0 && thisAppointment?.user_id === userId && edit === false ? <div id='review-form-div'><form onSubmit={submitReview}>
+                            <label>Feedback</label>
+                            <textarea name="content" id="" cols="30" rows="5" value={content || ''} onChange={e => setContent(e.target.value)} placeholder='Leave feedback...' required></textarea>
+                            <label htmlFor="">Rating</label>
+                            <input type="number" min='1' max='5' value={rating || ''} onChange={e => setRating(e.target.value)} required />
+                            <br />
+                            <div id='review-btns-edit-delete'>
+                                <button id={thisAppointment.id} type='submit'>{`Review ${thisAppointment.feeder}`}</button>
+                            </div>
+                        </form></div> : ''}
+
+                        {reviewed.length > 0 && thisAppointment?.completed && edit === false ? <div id='reviews-text-div'>
+                            <p>"{reviewed[0]?.content}"</p>
+                            <div id='starfish-div'>{renderRating(reviewed[0]?.rating)}</div>
+
+                            {thisAppointment.user_id === userId && <div id='review-btns-edit-delete'>
+                                <button id={reviewed[0]?.id} onClick={editThisReview}>Edit</button>
+                                <button id={reviewed[0]?.id} onClick={deleteThisReview}>Delete</button>
+                            </div>}
+                        </div> : ''}
+
+                        {edit === true ? <div id='review-form-div'><form onSubmit={updateReview}>
+                            <label>Feedback</label>
+                            <textarea name="content" id="" cols="30" rows="5" value={content || ''} onChange={e => setContent(e.target.value)} placeholder='Leave feedback...' required></textarea>
+                            <label htmlFor="">Rating</label>
+                            <input type="number" min='1' max='5' value={rating || ''} onChange={e => setRating(e.target.value)} />
+                            <br />
+                            <div id='review-btns-edit-delete'>
+                                <button id={thisAppointment.id} type='submit'>{`Edit review`}</button>
+                            </div>
+                        </form></div> : ''}
+                    </div> : ''}
             </div>
+
             <div id='single-appointment-bottom'>
 
                 {thisAppointment?.user_id === userId && !thisAppointment?.completed && <form id='two-btns-form'>
                     <button id={thisAppointment.id} onClick={editAppointment}>Edit this appointment</button>
                     <button id={thisAppointment.id} onClick={cancelAppointment}> {`Cancel ${thisAppointment.appointment_type}`}</button>
                 </form>}
-
-                {!reviewed.length && thisAppointment?.user_id === userId && thisAppointment?.completed && <form onSubmit={submitReview}>
-                    <label htmlFor="">Rating</label>
-                    <input type="number" min='1' max='5' value={rating} onChange={e => setRating(e.target.value)} />
-                    <label>Feedback</label>
-                    <textarea name="content" id="" cols="30" rows="10" value={content} onChange={e => setContent(e.target.value)} placeholder='Leave feedback...'></textarea>
-                    <button id={thisAppointment.id} type='submit'> {`Leave review for ${thisAppointment.feeder}`}</button>
-                </form>}
-
-                {reviewed.length && thisAppointment?.completed && thisAppointment.user_id === userId ? <div>
-                    <p>{reviewed[0]?.content}</p>
-                    <button id={reviewed[0]?.id} onClick={editThisReview}>Edit Review</button>
-                    <button id={reviewed[0]?.id} onClick={deleteThisReview}>Delete Review</button>
-                </div> : ''}
 
                 {thisAppointment?.user_id !== userId && thisAppointment?.feeder_id === null && isUserFeeder ? <button onClick={respondToAppointment}>{`I can respond to this ${thisAppointment.appointment_type}`}</button> : ''
                 }
