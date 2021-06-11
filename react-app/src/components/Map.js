@@ -28,7 +28,6 @@ function MapContainer(props) {
     }
 
     useEffect(() => {
-
         otherUserAppointments.forEach(async appointment => {
             const response = await Geocode.fromAddress(`${appointment.street_address}, ${appointment.city}, ${appointment.state}`);
             const { lat, lng } = response.results[0].geometry.location;
@@ -36,7 +35,7 @@ function MapContainer(props) {
             const marker = (
                 <Marker
                     key={appointment.id}
-                    name={'I am a marker'}
+                    name={appointment.id}
                     position={{
                         lat,
                         lng
@@ -44,7 +43,6 @@ function MapContainer(props) {
                     onClick={() => markerClick(appointment.id)}
                 />
             );
-
             setMarkers(prevMarkers => [...prevMarkers, marker]);
         });
 
