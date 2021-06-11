@@ -76,8 +76,8 @@ export const signUp = (username, email, password, zip_code) => async (dispatch) 
   if (data.errors) {
     return data;
   }
-
   dispatch(setUser(data))
+  return {};
 }
 
 export const updateUser = (userId) => async (dispatch) => {
