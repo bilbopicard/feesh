@@ -31,6 +31,7 @@ nav a{
 .nav-link:hover {
     text-decoration: none; 
     color: rgb(140,82,255);
+    cursor: pointer;
 }
 
 .nav-btn {
