@@ -35,6 +35,12 @@ const NavBar = () => {
           </NavLink>
         </li>}
 
+        <li>
+          <NavLink to="/about" exact={true} className="nav-link">
+            About
+          </NavLink>
+        </li>
+
         {user && <li>
           <NavLink to="/appointments" exact={true} className="nav-link">
             My Calendar

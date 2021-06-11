@@ -17,19 +17,6 @@ function FindAppointments() {
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-        // hh = d.getHours();
-        // m = d.getMinutes();
-
-        // let dd = "AM";
-        // let h = hh;
-        // if (h >= 12) {
-        //     h = hh - 12;
-        //     dd = "PM";
-        // }
-        // if (h === 0) {
-        //     h = 12;
-        // }
-        // m = m < 10 ? "0" + m : m;
 
         return [[month, day, year].join('-')];
     }
@@ -46,7 +33,7 @@ function FindAppointments() {
             <div id='find-appointment-container'>
                 <div id='find-appointment-left-div'>
                     {otherUserAppointments.map(appointment => (
-                        <div id='find-appointment-left-inner'>
+                        <div id='find-appointment-left-inner' key={appointment.id}>
                             <NavLink to={`/appointments/${appointment.id}`} key={appointment.id}>
                                 <div className={`find-appointment-inner-div ${appointment.completed} ? 'completed' : ''}`} key={appointment.id}>
                                     <div className='find-appointment-inner-text'>

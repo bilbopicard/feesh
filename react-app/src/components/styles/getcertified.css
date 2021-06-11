@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+
+#get-certified-container {
+    width: 70%;
+    margin: 40px auto;
+    background-color: white;
+    box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
+    border-radius: 4px;
+    padding: 20px 40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#get-certified-container h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#get-certified-container p {
+    font-size: 1.2rem;
+}
+
+#get-certified-container button {
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    margin: 0 30px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(0,194,203, 0.8);;
+}
+
+#get-certified-container button:hover {
+    /* cursor: pointer; */
+    background-color: rgba(0,194,203, 0.7);
+}
+
+#feesher-button-div {
+    display: flex;
+    justify-content: center;
+}
+
+#feed-video {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+} 

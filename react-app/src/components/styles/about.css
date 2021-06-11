@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+
+#about-container {
+    box-shadow: 0 0 3px 3px rgba(0,194,203, 0.5);
+    width: 60%;
+    margin: 10vh auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+}
+
+#about-right-div p{
+    font-size: 1.1rem;
+}
+
+#my-name {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#about-pic {
+    width: 100%;
+    min-width: 200px;
+}
+
+#about-right-div {
+    margin-left: 20px;
+}
+
+#about-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#about-links a {
+    font-size: 1.3rem;
+    color: white;
+    text-decoration: none;
+    margin: 0 30px;
+    padding: 4px 8px;
+    border-radius: 10px;
+    background-color: rgba(0,194,203, 0.8);;
+}
+
+#about-links a:hover {
+    background-color: rgba(0,194,203, 0.7);
+}
+#linkedin-icon {
+    font-size: 1.4rem;
+}

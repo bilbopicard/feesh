@@ -78,12 +78,32 @@ export const signUp = (username, email, password, zip_code) => async (dispatch) 
   }
 
   dispatch(setUser(data))
+}
+
+export const updateUser = (userId) => async (dispatch) => {
+  console.log(userId)
+  const response = await fetch(`/api/users/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId
+    }),
+  })
+  const data = await response.json();
+  if (data.errors) {
+    return data;
+  }
+
+  dispatch(setUser(data))
   return {};
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
+      console.log(action.payload)
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
