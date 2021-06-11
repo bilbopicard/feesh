@@ -7,6 +7,7 @@ import fishLogo from '../../images/feesh-logo.svg'
 import fishLogo2 from '../../images/feesh-logo-2.svg'
 
 const SignUpForm = () => {
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +19,11 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      await dispatch(signUp(username, email, password, zip_code));
+      const data = await dispatch(signUp(username, email, password, zip_code));
+      if (data.errors) {
+        console.log(data)
+        setErrors(data.errors);
+      }
     }
   };
 
@@ -58,6 +63,11 @@ const SignUpForm = () => {
         <div id='signup-container'>
           <h2>Sign-up</h2>
           <form onSubmit={onSignUp}>
+            <div id='signup-errors'>
+              {errors.map((error) => (
+                <div key={error}>{error[0].toUpperCase() + error.slice(1)}</div>
+              ))}
+            </div>
             <div>
               <label>User Name</label>
               <br />

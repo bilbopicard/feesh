@@ -49,9 +49,9 @@ const LoginForm = () => {
         <div id='login-lower-div'>
           <h2>Login</h2>
           <form onSubmit={onLogin}>
-            <div>
+            <div id='login-errors'>
               {errors.map((error) => (
-                <div key={error}>{error}</div>
+                <div key={error}>{error[0].toUpperCase() + error.slice(1)}</div>
               ))}
             </div>
             <div className='login-input-div'>

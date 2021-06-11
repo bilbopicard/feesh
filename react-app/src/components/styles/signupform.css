@@ -82,3 +82,7 @@
 #signup-container button {
     display: flex;
 }
+
+#signup-errors {
+    color: red;
+}

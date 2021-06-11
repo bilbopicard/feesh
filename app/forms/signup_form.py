@@ -12,8 +12,25 @@ def user_exists(form, field):
         raise ValidationError("User is already registered.")
 
 
+def email_valid(form, field):
+    print("Validating Email Address")
+    email = field.data
+    if not email.count("@"):
+        raise ValidationError("Email is invalid")
+
+
+def user_already_in_db(form, field):
+    print("Checking if username exists")
+    username = field.data
+    user = User.query.filter(User.username == username).first()
+    if user:
+        raise ValidationError("Username is already registered")
+
+
 class SignUpForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired()])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    username = StringField('username', validators=[
+                           DataRequired(), user_already_in_db])
+    email = StringField('email', validators=[
+                        DataRequired(), user_exists, email_valid])
     password = StringField('password', validators=[DataRequired()])
     zip_code = StringField('zip_code', validators=[DataRequired()])
