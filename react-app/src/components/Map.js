@@ -25,7 +25,7 @@ function MapContainer(props) {
 
     const notCompletedAppointments = otherUserAppointments.filter(appointment => !appointment.completed && !appointment.feeder)
 
-    console.log(notCompletedAppointments)
+    // console.log(notCompletedAppointments)
 
     const markerClick = (id) => {
         history.push(`/appointments/${id}`)

@@ -35,7 +35,7 @@ export const allReviews = () => async (dispatch) => {
 }
 
 export const createReview = (payload) => async (dispatch) => {
-    console.log('in store#!@$!@$@!$@!', payload)
+    // console.log('in store#!@$!@$@!$@!', payload)
     // console.log('.......FROM STORE......', time)
     const response = await fetch('/api/reviews/', {
         method: "POST",
@@ -53,7 +53,7 @@ export const createReview = (payload) => async (dispatch) => {
 
 export const editReview = (payload) => async (dispatch) => {
     const { id } = payload;
-    console.log(payload)
+    // console.log(payload)
     const response = await fetch(`/api/reviews/${id}`, {
         method: "PUT",
         headers: {
@@ -62,16 +62,16 @@ export const editReview = (payload) => async (dispatch) => {
         body: JSON.stringify(payload)
     })
     if (response.ok) {
-        console.log('woot')
+        // console.log('woot')
         const data = await response.json()
-        console.log('returned data weeeee', data)
+        // console.log('returned data weeeee', data)
         dispatch(getReviews(data))
     }
 }
 
 export const deleteReview = (payload) => async (dispatch) => {
     const { reviewId } = payload;
-    console.log(reviewId)
+    // console.log(reviewId)
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: "DELETE",
         headers: {

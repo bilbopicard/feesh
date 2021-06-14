@@ -31,7 +31,7 @@ function SingleAppointment() {
 
     const editAppointment = (e) => {
         e.preventDefault()
-        console.log(e.target.id)
+        // console.log(e.target.id)
         history.push(`/appointments/${e.target.id}/edit`)
     }
 

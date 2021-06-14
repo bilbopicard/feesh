@@ -81,7 +81,7 @@ export const signUp = (username, email, password, zip_code) => async (dispatch) 
 }
 
 export const updateUser = (userId) => async (dispatch) => {
-  console.log(userId)
+  // console.log(userId)
   const response = await fetch(`/api/users/${userId}`, {
     method: "PUT",
     headers: {
