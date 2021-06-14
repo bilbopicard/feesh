@@ -71,8 +71,10 @@
     box-sizing: border-box;
     width: 46%;
     overflow-y: scroll;
-    /* border: 2px solid rgb(140,82,255); */
-    /* background-color: rgba(0,194,203, 0.1); */
+    background-color: rgba(211, 211, 211, 0.3);
+    border: 2px solid rgba(0,0,0,0.5);
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 #my-appointments-flex-container h2 {
@@ -83,20 +85,27 @@
     box-sizing: border-box;
     width: 46%;
     overflow-y: scroll;
+    background-color: rgba(211, 211, 211, 0.3);
+    border: 2px solid rgba(0,0,0,0.5);
+    border-radius: 4px;
 }
 
 #upcoming-feeshing {
     box-sizing: border-box;
     width: 46%;
     overflow-y: scroll;
-    /* border: 2px solid blue; */
+    background-color: rgba(211, 211, 211, 0.3);
+    border: 2px solid rgba(0,0,0,0.5);
+    border-radius: 4px;
 }
 
 #completed-feeshing {
     box-sizing: border-box;
     width: 46%;
     overflow-y: scroll;
-    /* border: 2px solid blue; */
+    background-color: rgba(211, 211, 211, 0.3);
+    border: 2px solid rgba(0,0,0,0.5);
+    border-radius: 4px;
 }
 
 .my-appointments-link {
@@ -107,11 +116,11 @@
 .my-appointment-inner-div {
     box-sizing: border-box;
     width: 90%;
-    border: 3px solid rgba(140,82,255, 0.5);
+    border: 1px solid rgba(140,82,255, 0.5);
     /* box-shadow: 0 0 2px 2px rgba(0,194,203, 0.5); */
     /* background-color: rgba(0,194,203, 0.2); */
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 2px;
     background-color: white;
     overflow-y: hidden;
     margin: 14px auto;

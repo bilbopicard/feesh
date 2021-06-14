@@ -24,7 +24,7 @@ nav a{
     text-decoration: none; 
     padding: 4px 8px;
     font-size: 1.2rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: white
 }
 
@@ -40,7 +40,7 @@ nav a{
     border-radius: 40px;
     background-color: rgb(0,194,203);
     font-size: 1.2rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-family: 'Poppins', sans-serif;
     color: white;
 }
