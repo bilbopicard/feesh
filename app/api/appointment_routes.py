@@ -38,7 +38,9 @@ def create_appointment():
         print(new_appointment)
         db.session.add(new_appointment)
         db.session.commit()
-        return new_appointment.to_dict()
+        appointments = Appointment.query.join(
+            AppointmentType, AppointmentType.id == Appointment.appointment_type_id).join(FishType, FishType.id == Appointment.fish_type_id).all()
+        return {"appointments": [appointment.to_dict() for appointment in appointments]}
     return 'I think it worked'
 
 

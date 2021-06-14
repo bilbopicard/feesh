@@ -6,6 +6,7 @@
     text-align: center;
     font-family: 'Poppins', sans-serif;
     width: 100%;
+    color: rgba(0,0,0,0.8);
     /* text-decoration: underline; */
 }
 
@@ -16,6 +17,7 @@
     height: 70vh;
     margin: 0 auto;
     background-color: white;
+    color: rgba(0,0,0,0.8);
     /* padding: 10px; */
 }
 .find-appointment-inner-div {
@@ -82,4 +84,8 @@
     overflow:hidden;
     position: relative;
     /* background-color: white; */
+}
+
+#no-appointments {
+    text-align: center;
 }

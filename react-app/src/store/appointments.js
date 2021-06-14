@@ -45,7 +45,7 @@ export const createAppointment = (payload) => async (dispatch) => {
     if (response.ok) {
         // console.log('yay')
         const data = await response.json();
-        dispatch(addAppointment(data))
+        dispatch(getAppointments(data))
     }
 }
 
@@ -79,7 +79,9 @@ export const deleteAppointment = (payload) => async (dispatch) => {
         body: JSON.stringify(payload)
     })
     if (response.ok) {
-        console.log('WOO, ok')
+        const data = await response.json()
+        // console.log(data)
+        dispatch(getAppointments(data))
     }
 }
 

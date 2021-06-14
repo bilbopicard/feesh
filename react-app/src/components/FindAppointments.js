@@ -12,6 +12,8 @@ function FindAppointments() {
         return state.appointments.list.map(appointmentId => state.appointments[appointmentId]).filter(appointment => appointment.user_id !== userId)
     })
 
+    const notCompletedAppointments = otherUserAppointments.filter(appointment => !appointment.completed && !appointment.feeder)
+
     const niceDateFormat = (aptDate) => {
         let d = new Date(aptDate),
             month = '' + (d.getMonth() + 1),
@@ -32,7 +34,7 @@ function FindAppointments() {
             <h1 id='find-feeshing-h1'>Find Feeshing Trips</h1>
             <div id='find-appointment-container'>
                 <div id='find-appointment-left-div'>
-                    {otherUserAppointments.map(appointment => (
+                    {notCompletedAppointments.length ? notCompletedAppointments.map(appointment => (
                         <div id='find-appointment-left-inner' key={appointment.id}>
                             <NavLink to={`/appointments/${appointment.id}`} key={appointment.id}>
                                 <div className={`find-appointment-inner-div ${appointment.completed} ? 'completed' : ''}`} key={appointment.id}>
@@ -48,7 +50,7 @@ function FindAppointments() {
                                 </div>
                             </NavLink>
                         </div>
-                    ))}
+                    )) : <h2 id='no-appointments'>No Feeshing Trips Available</h2>}
                 </div>
                 <div id='find-appointment-right-div'>
                     <GoogleApiWrapper />

@@ -23,12 +23,16 @@ function MapContainer(props) {
         return state.appointments.list.map(appointmentId => state.appointments[appointmentId]).filter(appointment => appointment.user_id !== userId)
     })
 
+    const notCompletedAppointments = otherUserAppointments.filter(appointment => !appointment.completed && !appointment.feeder)
+
+    console.log(notCompletedAppointments)
+
     const markerClick = (id) => {
         history.push(`/appointments/${id}`)
     }
 
     useEffect(() => {
-        otherUserAppointments.forEach(async appointment => {
+        notCompletedAppointments.forEach(async appointment => {
             const response = await Geocode.fromAddress(`${appointment.street_address}, ${appointment.city}, ${appointment.state}`);
             const { lat, lng } = response.results[0].geometry.location;
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import '../styles/signupform.css'
 import fishLogo from '../../images/feesh-logo.svg'
@@ -121,6 +121,9 @@ const SignUpForm = () => {
             </div>
             <button type="submit">Sign Up</button>
           </form>
+          <p id='link-to-login'>Already have an account? <NavLink to="/login" exact={true} className="nav-link">
+            Log In
+          </NavLink> here!</p>
         </div>
       </div>
     </>
