@@ -35,11 +35,7 @@ const NavBar = () => {
           </NavLink>
         </li>} */}
 
-        {user && <li>
-          <NavLink to="/about" exact={true} className="nav-link">
-            About
-          </NavLink>
-        </li>}
+
 
         {user && <li>
           <NavLink to="/appointments" exact={true} className="nav-link">
@@ -52,9 +48,16 @@ const NavBar = () => {
             Go Feeshing
           </NavLink>
         </li>}
+
         {user && !user?.feeder && <li>
           <NavLink to='/getcertified' className="nav-link">
             Become Feesh Certified
+          </NavLink>
+        </li>}
+
+        {user && <li>
+          <NavLink to="/about" exact={true} className="nav-link">
+            About
           </NavLink>
         </li>}
 
