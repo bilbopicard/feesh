@@ -111,3 +111,11 @@
 #login-errors {
     color: red;
 }
+
+
+#link-to-signup {
+    text-align: center;
+}
+#link-to-signup a{
+    color: rgba(0,194,203, 0.9);
+}

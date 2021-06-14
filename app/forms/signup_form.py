@@ -9,7 +9,7 @@ def user_exists(form, field):
     email = field.data
     user = User.query.filter(User.email == email).first()
     if user:
-        raise ValidationError("User is already registered.")
+        raise ValidationError("Email is already registered.")
 
 
 def email_valid(form, field):

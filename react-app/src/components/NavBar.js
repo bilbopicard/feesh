@@ -19,27 +19,27 @@ const NavBar = () => {
           </NavLink>
         </li>}
 
-        {!user && <li>
+        {/* {!user && <li>
           <DemoUser />
-        </li>}
+        </li>} */}
 
-        {!user && <li>
+        {/* {!user && <li>
           <NavLink to="/login" exact={true} className="nav-link">
             Login
           </NavLink>
-        </li>}
+        </li>} */}
 
-        {!user && <li>
+        {/* {!user && <li>
           <NavLink to="/sign-up" exact={true} className="nav-link">
             Sign Up
           </NavLink>
-        </li>}
+        </li>} */}
 
-        <li>
+        {user && <li>
           <NavLink to="/about" exact={true} className="nav-link">
             About
           </NavLink>
-        </li>
+        </li>}
 
         {user && <li>
           <NavLink to="/appointments" exact={true} className="nav-link">

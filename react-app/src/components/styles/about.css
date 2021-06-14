@@ -11,6 +11,7 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
     background-color: white;
+    color: rgba(0,0,0,0.8);
 }
 
 #about-right-div p{

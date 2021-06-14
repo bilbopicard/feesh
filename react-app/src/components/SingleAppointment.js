@@ -117,6 +117,7 @@ function SingleAppointment() {
             completed: true
         }
         dispatch(updateAppointment(payload))
+        history.push('/appointments')
     }
 
     // const toggle = () => setEdit(!edit)

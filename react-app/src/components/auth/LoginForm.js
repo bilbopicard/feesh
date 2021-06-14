@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import DemoUser from '../auth/DemoUser';
 import fishLogo from '../../images/feesh-logo.svg'
@@ -79,6 +79,9 @@ const LoginForm = () => {
             <button id='login-submit' type="submit">Login</button>
           </form>
           <DemoUser />
+          <p id='link-to-signup'>Don't have an account? <NavLink to="/sign-up" exact={true} className="nav-link">
+            Sign Up
+          </NavLink> here!</p>
         </div>
       </div>
     </>

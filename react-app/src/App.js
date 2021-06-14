@@ -69,9 +69,9 @@ function App() {
         <ProtectedRoute path='/appointments/:id/edit'>
           <EditAppointment />
         </ProtectedRoute>
-        <Route path='/about'>
+        <ProtectedRoute path='/about'>
           <About />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

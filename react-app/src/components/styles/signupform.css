@@ -86,3 +86,10 @@
 #signup-errors {
     color: red;
 }
+
+#link-to-login {
+    text-align: center;
+}
+#link-to-login a{
+    color: rgba(0,194,203, 0.9);
+}
